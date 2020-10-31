@@ -13,9 +13,10 @@ import java.util.Date;
 public class ProjectService {
 
 
-    @Autowired
+
     ProjectDAO projectDAO;
 
+    @Autowired
     public ProjectService(ProjectDAO projectDAO) {
         this.projectDAO = projectDAO;
     }
