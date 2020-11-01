@@ -6,25 +6,38 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class NavigatorController {
 
-    @GetMapping
-    public String start()
-    {
-        return "index";
+    @GetMapping("")
+    public String start() {
+        return "myTasks";
     }
-    @GetMapping("/sd")
-    public String start1()
-    {
-        return "index2";
+
+    @GetMapping("/myTasks")
+    public String startMyTasks() {
+        return "myTasks";
     }
-    @GetMapping("/sd2")
-    public String start2()
-    {
-        return "index3";
+
+    @GetMapping("/createIssue")
+    public String startCreateIssue() {
+        return "createIssue";
     }
-    @GetMapping("/sd3")
-    public String start3()
-    {
-        return "index4";
+
+    @GetMapping("/createProject")
+    public String startCreateProject() {
+        return "redirect:/start";
+    }
+
+    @GetMapping("/openTasks")
+    public String startOpenTasks() {
+        return "redirect:/start";
+    }
+
+    @GetMapping("/inProgressTasks")
+    public String startInProgressTaskss() {
+        return "redirect:/start";
+    }
+    @GetMapping("/toAnalyze")
+    public String startToAnalyze() {
+        return "redirect:/start";
     }
 
 

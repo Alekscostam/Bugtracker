@@ -1,7 +1,11 @@
 package pl.kowalski.demo.restController;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
+import pl.kowalski.demo.model.Issue;
+import pl.kowalski.demo.model.modelDTO.IssueDTO;
 import pl.kowalski.demo.service.IssueService;
 import pl.kowalski.demo.service.ProjectService;
 
@@ -18,8 +22,12 @@ public class IssueRestController {
     }
 
     @PostMapping("/addNewIssue")
-    public void addNewIssue(String name, String data, String level , String desc, String custId)
+    public String addNewIssue(@ModelAttribute IssueDTO issue)
     {
+
+
+        return "asd";
+
     }
 
     @PostMapping("/addNewProject")
