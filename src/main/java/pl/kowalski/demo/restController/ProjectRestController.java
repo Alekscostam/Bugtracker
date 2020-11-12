@@ -2,26 +2,26 @@ package pl.kowalski.demo.restController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import pl.kowalski.demo.dao.ProjectDAO;
-import pl.kowalski.demo.model.Project;
+import pl.kowalski.demo.dao.ProjectRepository;
+import pl.kowalski.demo.model.Entity.Project;
 
 import java.util.List;
 
 public class ProjectRestController {
 
 
-    ProjectDAO projectDAO;
+    ProjectRepository projectRepository;
 
     @Autowired
-    public ProjectRestController(ProjectDAO projectDAO) {
-        this.projectDAO = projectDAO;
+    public ProjectRestController(ProjectRepository projectRepository) {
+        this.projectRepository = projectRepository;
     }
 
 
     @GetMapping("/findAllProjects")
     public List<Project> findAllProjects()
     {
-      return  projectDAO.findAll();
+      return  projectRepository.findAll();
     }
 
 

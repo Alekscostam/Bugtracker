@@ -31,9 +31,9 @@
 
 <body>
 <div style="width: 100%; height: 100%; min-height: 100%; min-width: 100%">
-    <nav style="width: 100%; height: 70px;  background-color:#4da6ff; border-style: outset">Test Page</nav>
+    <nav style="width: 100%; height: 70px;  background-color:#4da6ff; border-style: outset"></nav>
     <section style="width: 15%; height: 100%; float: left; border-style: outset ;  background-color:lightgray;">
-        <ul ><br>
+        <ul><br>
             <a class="links"  href="/myTasks">My tasks</a><br>
             <a class="links"  href="/createIssue">Add issue</a><br>
             <a class="links"  href="/createProject">Add new Project</a><br>
@@ -54,11 +54,9 @@
                         </td>
                     </tr>
                     <tr>
-
-
                         <td>
                             <label>
-                                <select style="" name="projectId">
+                                <select style="" name="projectName">
                                     <option value="" disabled selected>Select your project</option>
                                     <option>one</option>
                                 </select>
@@ -68,16 +66,19 @@
                     <tr>
                         <td>
                             <label>
-                               <input id="date" type="date" name="date" placeholder="Date" onblur="metoda()">
+                               <input  id="date" type="date" name="date" placeholder="Date" onblur="metoda()">
                             </label>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label>
-                                <select style="" name="importance">
+                                <select style="" name="level">
                                     <option value="" disabled selected>Select importance level</option>
-                                    <option value="0">one</option>
+                                    <option value="VERY_IMPORTANT">Very important</option>
+                                    <option value="IMPORTANT">important</option>
+                                    <option value="MODERATELY_IMPORTANT">Moderately important</option>
+                                    <option value="LITTLE_IMPORTANT">Little important</option>
                                 </select>
                             </label>
                         </td>
