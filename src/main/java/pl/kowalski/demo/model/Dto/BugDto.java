@@ -1,9 +1,11 @@
-package pl.kowalski.demo.model.Entity.Dto;
+package pl.kowalski.demo.model.Dto;
 
+import pl.kowalski.demo.model.Entity.Employee;
 import pl.kowalski.demo.model.Level;
 import pl.kowalski.demo.model.Progress;
 
 import java.util.Date;
+import java.util.List;
 
 public class BugDto {
 
@@ -12,6 +14,24 @@ public class BugDto {
     private Level level;
     private String description;
     private Progress progress;
+    private String employyeName;
+    private String projectName;
+
+    public String getEmployyeName() {
+        return employyeName;
+    }
+
+    public void setEmployyeName(String employyeName) {
+        this.employyeName = employyeName;
+    }
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
 
     public Long getId() {
         return id;
@@ -53,13 +73,7 @@ public class BugDto {
         this.progress = progress;
     }
 
-    public Long getReportedId() {
-        return reportedId;
-    }
 
-    public void setReportedId(Long reportedId) {
-        this.reportedId = reportedId;
-    }
 
-    private Long reportedId;
+
 }

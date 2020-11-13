@@ -40,6 +40,6 @@ public class Project {
     Set<Employee> employee;
 
     @OneToMany(mappedBy="project")
-    Set<Bug> bug;
+    Set<Bug> bugs;
 
 }

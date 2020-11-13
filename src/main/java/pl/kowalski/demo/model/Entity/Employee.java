@@ -37,15 +37,17 @@ public class Employee {
 
     @ManyToMany
     @JoinTable
-    Set<Bug> bug;
+    Set<Bug> bugs;
 
 
     @ManyToMany
     Set<Project> project;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(nullable = false)
+    @JoinColumn(name="institution_id", nullable = false)
     private Institution institution;
 
+    @OneToMany(mappedBy="employee")
+    Set<Bug> bug;
 
 }

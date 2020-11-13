@@ -2,7 +2,7 @@ package pl.kowalski.demo.restController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import pl.kowalski.demo.dao.ProjectRepository;
+import pl.kowalski.demo.Dao.Repositories.ProjectRepository;
 import pl.kowalski.demo.model.Entity.Project;
 
 import java.util.List;

@@ -20,8 +20,6 @@ public class Bug {
         this.description = description;
     }
 
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -29,48 +27,73 @@ public class Bug {
     private Level level;
     private String description;
     private Progress progress;
-    private Long reportedId;
-
-    public Progress getProgress() {
-        return progress;
-    }
-
-    public Long getReportedId() {
-        return reportedId;
-    }
-
-    public void setReportedId(Long reportedId) {
-        this.reportedId = reportedId;
-    }
 
     @ManyToMany
-    Set<Employee> employee;
-
+    Set<Employee> employees;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn( nullable = false)
+    @JoinColumn(name="project_id", nullable = false)
     private Project project;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name="employee_id", nullable = false)
+    private Employee employee;
+
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Date getDate() {
+        return date;
+    }
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public Level getLevel() {
+        return level;
     }
 
     public void setLevel(Level level) {
         this.level = level;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Progress getProgress() {
+        return progress;
     }
 
     public void setProgress(Progress progress) {
         this.progress = progress;
     }
 
-    public void setProject(Project projectId) {
-        this.project = projectId;
+    public Project getProject() {
+        return project;
     }
 
+    public void setProject(Project project) {
+        this.project = project;
+    }
 
+    public Employee getEmployeeId() {
+        return employee;
+    }
+
+    public void setEmployeeId(Employee employee) {
+        this.employee = employee;
+    }
 }

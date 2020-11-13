@@ -16,22 +16,22 @@ INSERT INTO employee(first_name,last_name,email,institution_id) VALUES('Employee
 INSERT INTO employee(first_name,last_name,email,institution_id) VALUES('Employee 8','Employee last1','Employee@wp.pl1',1);
 
 
-INSERT INTO bug(date,level,progress,reported_id,project_id,description) VALUES('1997-08-24',0,0,1,1,'desc1');
-INSERT INTO bug(date,level,progress,reported_id,project_id,description) VALUES('1998-08-24',1,0,2,2,'desc2');
-INSERT INTO bug(date,level,progress,reported_id,project_id,description) VALUES('1997-08-24',2,0,3,3,'desc3');
-INSERT INTO bug(date,level,progress,reported_id,project_id,description) VALUES('2020-08-24',0,0,4,1,'desc4');
-INSERT INTO bug(date,level,progress,reported_id,project_id,description) VALUES('1997-08-24',1,0,5,2,'desc5');
-INSERT INTO bug(date,level,progress,reported_id,project_id,description) VALUES('1997-08-24',2,0,6,3,'desc6');
-INSERT INTO bug(date,level,progress,reported_id,project_id,description) VALUES('1997-08-24',0,0,7,1,'desc7');
-INSERT INTO bug(date,level,progress,reported_id,project_id,description) VALUES('1997-08-24',2,0,8,2,'desc8');
-INSERT INTO bug(date,level,progress,reported_id,project_id,description) VALUES('1997-08-24',0,0,1,3,'desc9');
-INSERT INTO bug(date,level,progress,reported_id,project_id,description) VALUES('1998-08-24',1,0,2,1,'desc10');
-INSERT INTO bug(date,level,progress,reported_id,project_id,description) VALUES('1997-08-24',2,0,3,2,'desc11');
-INSERT INTO bug(date,level,progress,reported_id,project_id,description) VALUES('2020-08-24',0,0,4,3,'desc12');
-INSERT INTO bug(date,level,progress,reported_id,project_id,description) VALUES('1997-08-24',1,0,5,1,'desc13');
-INSERT INTO bug(date,level,progress,reported_id,project_id,description) VALUES('1997-08-24',2,0,6,2,'desc14');
-INSERT INTO bug(date,level,progress,reported_id,project_id,description) VALUES('1997-08-24',0,0,7,3,'desc15');
-INSERT INTO bug(date,level,progress,reported_id,project_id,description) VALUES('1997-08-24',1,0,8,1,'desc16');
+INSERT INTO bug(date,level,progress,employee_id,project_id,description) VALUES('1997-08-24',0,0,1,1,'desc1');
+INSERT INTO bug(date,level,progress,employee_id,project_id,description) VALUES('1998-08-24',1,1,2,2,'desc2');
+INSERT INTO bug(date,level,progress,employee_id,project_id,description) VALUES('1997-08-24',2,2,3,3,'desc3');
+INSERT INTO bug(date,level,progress,employee_id,project_id,description) VALUES('2020-08-24',0,3,4,1,'desc4');
+INSERT INTO bug(date,level,progress,employee_id,project_id,description) VALUES('1997-08-24',1,4,5,2,'desc5');
+INSERT INTO bug(date,level,progress,employee_id,project_id,description) VALUES('1997-08-24',2,1,6,3,'desc6');
+INSERT INTO bug(date,level,progress,employee_id,project_id,description) VALUES('1997-08-24',0,2,7,1,'desc7');
+INSERT INTO bug(date,level,progress,employee_id,project_id,description) VALUES('1997-08-24',2,3,8,2,'desc8');
+INSERT INTO bug(date,level,progress,employee_id,project_id,description) VALUES('1997-08-24',0,4,1,3,'desc9');
+INSERT INTO bug(date,level,progress,employee_id,project_id,description) VALUES('1998-08-24',1,1,2,1,'desc10');
+INSERT INTO bug(date,level,progress,employee_id,project_id,description) VALUES('1997-08-24',2,2,3,2,'desc11');
+INSERT INTO bug(date,level,progress,employee_id,project_id,description) VALUES('2020-08-24',0,3,4,3,'desc12');
+INSERT INTO bug(date,level,progress,employee_id,project_id,description) VALUES('1997-08-24',1,4,5,1,'desc13');
+INSERT INTO bug(date,level,progress,employee_id,project_id,description) VALUES('1997-08-24',2,1,6,2,'desc14');
+INSERT INTO bug(date,level,progress,employee_id,project_id,description) VALUES('1997-08-24',0,2,7,3,'desc15');
+INSERT INTO bug(date,level,progress,employee_id,project_id,description) VALUES('1997-08-24',1,3,8,1,'desc16');
 
 
 

@@ -9,4 +9,14 @@ body, html {
     margin: 20px;
 
 }
-
+.thHeader{
+    font-size: 20px;
+}
+.thStyle{
+    font-size: 15px;
+    font-weight: normal;
+    height: 50px;
+}
+.inputMoreInf{
+    height: 50px;
+}

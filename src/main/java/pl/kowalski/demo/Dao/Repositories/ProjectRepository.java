@@ -1,4 +1,4 @@
-package pl.kowalski.demo.dao;
+package pl.kowalski.demo.Dao.Repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import pl.kowalski.demo.model.Entity.Project;

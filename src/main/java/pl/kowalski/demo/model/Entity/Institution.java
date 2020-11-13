@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -21,8 +22,8 @@ public class Institution {
     private String name;
     private String description;
 
-    @OneToMany(mappedBy="institution")
-    Set<Employee> employee ;
+    @OneToMany(mappedBy="institution", cascade=CascadeType.REMOVE)
+    private Set<Employee> employee;
 
     public void setName(String name) {
         this.name = name;
