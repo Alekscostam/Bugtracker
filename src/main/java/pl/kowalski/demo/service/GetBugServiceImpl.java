@@ -6,27 +6,25 @@ import org.springframework.stereotype.Service;
 import pl.kowalski.demo.Dao.JdbcTemplate.BugDaoImpl;
 import pl.kowalski.demo.model.ObjectMapper;
 import pl.kowalski.demo.Dao.Repositories.BugRepository;
-import pl.kowalski.demo.Dao.Repositories.ProjectRepository;
 import pl.kowalski.demo.model.Entity.Bug;
 import pl.kowalski.demo.model.Dto.BugDto;
-import pl.kowalski.demo.model.Entity.Project;
+import pl.kowalski.demo.service.Interfaces.GetBugService;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class GetBugService {
+public class GetBugServiceImpl implements GetBugService {
 
     BugRepository bugRepository;
-    ProjectRepository projectRepository;
     BugDaoImpl getBugDao;
 
     @Autowired
-    public GetBugService(BugRepository bugRepository, ProjectRepository projectRepository, BugDaoImpl getBugDao) {
+    public GetBugServiceImpl(BugRepository bugRepository, BugDaoImpl getBugDao) {
         this.bugRepository = bugRepository;
-        this.projectRepository = projectRepository;
         this.getBugDao = getBugDao;
     }
+
 
     public List<BugDto> getAllBugsByProjectId(Long projectId) {
         List<Bug> allByProjectId = bugRepository.findAllByProjectId(projectId);
@@ -35,7 +33,7 @@ public class GetBugService {
         return bugDtoList;
     }
 
-    public BugDto findInfoAboutBug(Long id) {
+    public BugDto getInfoAboutBug(Long id) {
         return getBugDao.findAllInfoAboutBug(id);
     }
 
@@ -45,10 +43,6 @@ public class GetBugService {
 
     }
 
-    public List<Project> findAllProjects() {
 
-        return projectRepository.findAll();
-
-    }
 
 }

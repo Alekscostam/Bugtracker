@@ -15,8 +15,6 @@
     <script>
 
         function generateTable() {
-          //  window.location.reload();
-
             var xhttp = new XMLHttpRequest();
             var issue2 = "";
             var id = document.getElementById("box1");
@@ -61,11 +59,11 @@
                 issueTable.innerHTML +=
                     '<tr>' +
                     '<th class="thStyle" width="100px" bgcolor="'+color+'">' + issue[row].id +'</th>'+
-                    '<th class="thStyle" width="300px" bgcolor="'+color+'">' + (issue[row].date).toString().substring(0,10) +'</th>'+
+                    '<th class="thStyle" width="300px" bgcolor="'+color+'">' + issue[row].date.toString().substring(0,10) +'</th>'+
                     '<th class="thStyle" width="300px" bgcolor="'+color+'">' + issue[row].progress +'</th>'+
                     '<th class="thStyle" width="800px" bgcolor="'+color+'">' + issue[row].description +'</th>' +
                     '<th class="thStyle" >' +
-                    '<form method="get" action="/bugInfo">' +
+                    '<form method="get" action="/AllInfoAboutBug">' +
                     '<input type="hidden"name="bugId" value="'+issue[row].id+'">' +
                     '<input type="submit" class="inputMoreInf" value="More info">' +
                     '</form>' +
@@ -113,8 +111,9 @@
     </aside>
 
 </div>
-
-
+<div>
+    <div  w3-include-HTML="AboutBug.html"></div >
+</div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>

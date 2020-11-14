@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import pl.kowalski.demo.model.Dto.BugDto;
-import pl.kowalski.demo.service.GetBugService;
+import pl.kowalski.demo.service.GetBugServiceImpl;
 
 import java.util.List;
 
@@ -14,11 +14,11 @@ import java.util.List;
 public class BugRestController {
 
 
-    private GetBugService getBugService;
+    private GetBugServiceImpl getBugServiceImpl;
 
     @Autowired
-    public BugRestController(GetBugService getBugService) {
-        this.getBugService = getBugService;
+    public BugRestController(GetBugServiceImpl getBugServiceImpl) {
+        this.getBugServiceImpl = getBugServiceImpl;
     }
 
     @PostMapping("/addNewIssue")
@@ -29,12 +29,12 @@ public class BugRestController {
     @GetMapping("/getActuallyTasksByProjectId")
     public List<BugDto>  getTasksByProjectId(Long projectId) {
 
-        return  getBugService.getAllBugsByProjectId(projectId);
+        return  getBugServiceImpl.getAllBugsByProjectId(projectId);
     }
 
     @GetMapping("/getMoreInfoAboutBug")
     public List<BugDto>  getMoreInfoAboutBug(Long bugId) {
-        return  getBugService.getAllBugsByProjectId(bugId);
+        return  getBugServiceImpl.getAllBugsByProjectId(bugId);
     }
 
 

@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 import pl.kowalski.demo.model.Dto.BugDto;
 import pl.kowalski.demo.model.Entity.Project;
-import pl.kowalski.demo.service.GetBugService;
+import pl.kowalski.demo.service.GetBugServiceImpl;
+import pl.kowalski.demo.service.GetEmployeeServiceImpl;
+import pl.kowalski.demo.service.GetProjectServiceImpl;
 
 import java.util.List;
 
@@ -14,12 +16,19 @@ import java.util.List;
 public class NavigatorController {
 
 
-    private GetBugService getBugService;
+    private final GetBugServiceImpl getBugServiceImpl;
+    private final GetEmployeeServiceImpl getEmployeeServiceImpl;
+    private final GetProjectServiceImpl getProjectServiceImpl;
 
     @Autowired
-    public NavigatorController(GetBugService getBugService) {
-        this.getBugService = getBugService;
+    public NavigatorController(GetBugServiceImpl getBugServiceImpl, GetEmployeeServiceImpl getEmployeeServiceImpl, GetProjectServiceImpl getProjectServiceImpl) {
+        this.getBugServiceImpl = getBugServiceImpl;
+        this.getEmployeeServiceImpl = getEmployeeServiceImpl;
+        this.getProjectServiceImpl = getProjectServiceImpl;
     }
+
+
+
 
     @GetMapping("/")
     public String start() {
@@ -29,8 +38,8 @@ public class NavigatorController {
     @GetMapping("/allTasks")
     public ModelAndView startMyTasks() {
 
-        ModelAndView mav = new ModelAndView("AllTasks");
-        List<Project> projectList = getBugService.findAllProjects();
+        ModelAndView mav = new ModelAndView("AllBugs");
+        List<Project> projectList = getProjectServiceImpl.findAllProjects();
         mav.addObject("projects", projectList);
         return mav;
     }
@@ -59,11 +68,13 @@ public class NavigatorController {
         return "redirect:/start";
     }
 
-    @GetMapping("/bugInfo")
+    @GetMapping("/AllInfoAboutBug")
     public ModelAndView startBugInfoPage(Long bugId) {
-        ModelAndView mav = new ModelAndView("AllTasks");
-        BugDto infoAboutBug = getBugService.findInfoAboutBug(bugId);
+        ModelAndView mav = new ModelAndView("AboutBug");
+        BugDto infoAboutBug = getBugServiceImpl.getInfoAboutBug(bugId);
+        String employeeNamesByBugId = getEmployeeServiceImpl.getEmployeeNamesByBugId(bugId);
         mav.addObject("bugInfo",infoAboutBug);
+        mav.addObject("employeeNames",employeeNamesByBugId);
         return mav;
     }
 
