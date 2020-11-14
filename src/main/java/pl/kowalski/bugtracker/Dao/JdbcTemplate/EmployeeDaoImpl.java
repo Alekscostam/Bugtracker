@@ -3,11 +3,12 @@ package pl.kowalski.bugtracker.Dao.JdbcTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
+import pl.kowalski.bugtracker.Dao.JdbcTemplate.Interfaces.EmployeeDao;
 
 import java.util.List;
 
 @Component
-public class EmployeeDaoImpl implements EmployeeDao{
+public class EmployeeDaoImpl implements EmployeeDao {
 
 
     JdbcTemplate jdbcTemplate;

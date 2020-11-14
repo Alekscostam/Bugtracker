@@ -27,9 +27,6 @@ public class NavigatorController {
         this.getProjectServiceImpl = getProjectServiceImpl;
     }
 
-
-
-
     @GetMapping("/")
     public String start() {
         return "redirect:allTasks";
