@@ -20,7 +20,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
     @Override
     public List<String> findEmployeeNamesByBugId(Long bugId) {
-        String sql ="SELECT e.first_name, e.last_name " +
+        String sql =
+                "SELECT e.first_name, e.last_name " +
                 "FROM employee e " +
                 "JOIN bug_employees be on e.id = be.employees_id " +
                 "JOIN bug b on b.id = be.bug_id " +

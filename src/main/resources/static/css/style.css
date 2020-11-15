@@ -11,6 +11,7 @@ body, html {
 }
 .thHeader{
     font-size: 20px;
+    background-color: silver;
 }
 .thStyle{
     font-size: 15px;
@@ -19,4 +20,8 @@ body, html {
 }
 .inputMoreInf{
     height: 50px;
+}
+.btnAction{
+    width: 400px;
+    height: 45px;
 }

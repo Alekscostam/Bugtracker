@@ -29,10 +29,10 @@ public class NavigatorController {
 
     @GetMapping("/")
     public String start() {
-        return "redirect:allTasks";
+        return "redirect:AllBugs";
     }
 
-    @GetMapping("/allTasks")
+    @GetMapping("/AllBugs")
     public ModelAndView startMyTasks() {
 
         ModelAndView mav = new ModelAndView("AllBugs");
@@ -41,9 +41,12 @@ public class NavigatorController {
         return mav;
     }
 
-    @GetMapping("/createIssue")
-    public String startCreateIssue() {
-        return "createIssue";
+    @GetMapping("/CreateNewIssue")
+    public ModelAndView  startCreateIssue() {
+        ModelAndView mav = new ModelAndView("AddNewBug");
+        List<Project> projectList = getProjectServiceImpl.findAllProjects();
+        mav.addObject("projects", projectList);
+        return mav;
     }
 
     @GetMapping("/createProject")

@@ -6,7 +6,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import pl.kowalski.bugtracker.model.Dto.BugDto;
+import pl.kowalski.bugtracker.model.Entity.Bug;
+import pl.kowalski.bugtracker.model.Progress;
+import pl.kowalski.bugtracker.service.DmlBugServiceImpl;
 import pl.kowalski.bugtracker.service.GetBugServiceImpl;
+import pl.kowalski.bugtracker.service.Interfaces.DmlBugService;
 
 import java.util.List;
 
@@ -14,16 +18,22 @@ import java.util.List;
 public class BugRestController {
 
 
-    private GetBugServiceImpl getBugServiceImpl;
+    private final GetBugServiceImpl getBugServiceImpl;
+    private final DmlBugServiceImpl dmlBugServiceImpl;
 
     @Autowired
-    public BugRestController(GetBugServiceImpl getBugServiceImpl) {
+    public BugRestController(GetBugServiceImpl getBugServiceImpl, DmlBugServiceImpl dmlBugServiceImpl) {
         this.getBugServiceImpl = getBugServiceImpl;
+        this.dmlBugServiceImpl = dmlBugServiceImpl;
     }
 
-    @PostMapping("/addNewIssue")
-    public void addNewIssue(@ModelAttribute BugDto issue) {
 
+
+
+    @PostMapping("/addNewIssue")
+    public void addNewIssue(@ModelAttribute Bug bug) {
+
+        dmlBugServiceImpl.addNewBug(bug);
     }
 
     @GetMapping("/getActuallyTasksByProjectId")
@@ -44,5 +54,7 @@ public class BugRestController {
         mav.addObject("messages", "object");
         return mav;
     }
+
+
 
 }

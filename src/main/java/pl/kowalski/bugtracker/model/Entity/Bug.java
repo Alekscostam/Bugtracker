@@ -2,6 +2,7 @@ package pl.kowalski.bugtracker.model.Entity;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import pl.kowalski.bugtracker.model.Level;
 import pl.kowalski.bugtracker.model.Progress;
 
@@ -23,6 +24,7 @@ public class Bug {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @DateTimeFormat(pattern ="yyyy-MM-dd")
     private Date date;
     private Level level;
     private String description;
