@@ -29,7 +29,7 @@ public class NavigatorController {
 
     @GetMapping("/")
     public String start() {
-        return "redirect:AllBugs";
+        return "redirect:Register";
     }
 
     @GetMapping("/AllBugs")
@@ -38,6 +38,14 @@ public class NavigatorController {
         ModelAndView mav = new ModelAndView("AllBugs");
         List<Project> projectList = getProjectServiceImpl.findAllProjects();
         mav.addObject("projects", projectList);
+        return mav;
+    }
+
+     @GetMapping("/Register")
+    public ModelAndView startRegister() {
+
+        ModelAndView mav = new ModelAndView("Register");
+
         return mav;
     }
 
@@ -75,6 +83,17 @@ public class NavigatorController {
         String employeeNamesByBugId = getEmployeeServiceImpl.getEmployeeNamesByBugId(bugId);
         mav.addObject("bugInfo",infoAboutBug);
         mav.addObject("employeeNames",employeeNamesByBugId);
+        return mav;
+    }
+
+    @GetMapping("/Login")
+    public ModelAndView startLoginPage( ) {
+        ModelAndView mav = new ModelAndView("Login");
+        return mav;
+    }
+    @GetMapping("/AddInstitution")
+    public ModelAndView startAddInstitutionPage( ) {
+        ModelAndView mav = new ModelAndView("AddInstitution");
         return mav;
     }
 

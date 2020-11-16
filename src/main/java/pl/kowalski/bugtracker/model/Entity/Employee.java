@@ -18,6 +18,8 @@ public class Employee {
     private String firstName;
     private String lastName;
     private String email;
+    private String password;
+
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -35,6 +37,10 @@ public class Employee {
         this.institution = institutionId;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @ManyToMany
     @JoinTable
     Set<Bug> bugs;
@@ -44,10 +50,10 @@ public class Employee {
     Set<Project> project;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name="institution_id", nullable = false)
+    @JoinColumn(name = "institution_id", nullable = false)
     private Institution institution;
 
-    @OneToMany(mappedBy="employee")
+    @OneToMany(mappedBy = "employee")
     Set<Bug> bug;
 
 }

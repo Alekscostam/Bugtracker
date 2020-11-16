@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <title>My Tasks</title>
+
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div style="width: 100%; height: 100%; min-height: 100%; min-width: 100%" align="center">
+    <nav style="width: 100%; height: 70px;  background-color: darkgray; color: white; border-style: outset">
+        <h1 style="color: white">Login page</h1>
+    </nav>
+
+    <form autocomplete="off" action="/AllBugs"  align="center">
+        <div class="container">
+            <h1>Login</h1>
+            <p>Please fill in this form to Log In.</p>
+            <hr>
+            <h5>
+                <table style="margin-top: 50px;  text-align: left;" align="center">
+                    <tr>
+                        <th> Password</th>
+                        <th><input id="psw-repeat" placeholder="Enter Password" type="password"/></th>
+                    </tr>
+                    <tr>
+                        <th> Email</th>
+                        <th><input id="email" placeholder="Enter Email" type="email"/></th>
+                    </tr>
+                </table>
+                <br>
+                <button type="submit" class="loginbtn" >Login</button>
+            </h5>
+            <div class="container signin">
+                <p>Do you want to create a new account? <a href="/Register">Register</a>.</p>
+                <p>Do you want to add institutions? <a href="#">add institution</a>.</p>
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
