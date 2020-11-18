@@ -23,5 +23,4 @@ public class DmlBugServiceImpl implements DmlBugService {
         bugRepository.save(bug);
     }
 
-
 }

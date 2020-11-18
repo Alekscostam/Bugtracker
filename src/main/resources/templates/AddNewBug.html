@@ -16,10 +16,10 @@
 <body>
 
 <div style="width: 100%; height: 100%; min-height: 100%; min-width: 100%">
-    <nav style="width: 100%; height: 70px;  background-color: darkgray; color: white; border-style: outset">
+    <nav style="width: 100%; height: 100px;  background-color: darkgray; color: white; border-style: groove">
         <h1 style="color: lightgray"></h1>
     </nav>
-    <section style="width: 15%; height: 100%; float: left; border-style: outset ;  background-color:lightgray;">
+    <section style="width: 15%; height: 100%; float: left; border-style: groove ;  background-color:lightgray;">
         <ul><br>
             <a class="links" href="/AllBugs">All Issues</a><br>
             <a class="links" href="/MyTasks">My tasks</a><br>
@@ -27,44 +27,47 @@
         </ul>
     </section>
     <aside style="width: 85%; height: 100%; float: left; background-color:transparent;">
+        <div class="container-top">
+            <h2>Add new issue</h2>
+            <p>Please.</p>
+            <hr>
+            <div style="margin: 50px">
+                <form action="/addNewIssue" method="post" align="center">
 
-        <div style="margin: 150px">
-            <form action="/addNewIssue" method="post">
-            <table border="1">
-                <tr>
-                    <th class="thHeader" width="300px">Project</th>
-                    <th class="thStyle" width="600px">
-                        <select style="width: 600px; height: 50px; font-size: 20px" name="project">
-                            <option th:each="project: ${projects}" th:value="${project.id}" th:text="${project.name}" ></option>
-                        </select>
-                    </th>
-                </tr>
-                <tr>
-                    <th class="thHeader" width="300px">Importance Level</th>
-                    <th class="thStyle" width="600px">
-                        <select style="width: 600px; height: 50px; font-size: 20px" name="level">
-                        <option> HIGH </option>
-                        <option> MEDIUM </option>
-                        <option> LOW </option>
-                        </select>
-                    </th>
-                </tr>
-                <tr>
-                    <th class="thHeader" width="300px">Description</th>
-                    <th class="thStyle" width="600px">
-                        <textarea   rows="4" name="description" style="width: 600px; font-size: 20px">
+                    <h5>
+                        <table style="margin-top: 50px;  text-align: left;" align="center">
+                            <tr>
+                                <th>Project</th>
+                                <th class="thStyle" width="600px" height="30px">
+                                    <select style="width: 600px; height: 70px; font-size: 20px" name="project">
+                                        <option th:each="project: ${projects}" th:value="${project.id}"
+                                                th:text="${project.name}"></option>
+                                    </select>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Importance Level</th>
+                                <th class="thStyle" width="600px" height="30px">
+                                    <select style="width: 600px; height: 70px; font-size: 20px" name="level">
+                                        <option> HIGH</option>
+                                        <option> MEDIUM</option>
+                                        <option> LOW</option>
+                                    </select>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Description</th>
+                                <th class="thStyle" width="600px" height="150px">
+                        <textarea name="description" style="width: 600px; height: 150px; font-size: 20px">
                         </textarea>
-                    </th>
-                </tr>
-                <tr>
-                    <th class="thHeader" width="300px">Date</th>
-                    <th class="thStyle" width="600px">
-                        <input type="date" name="date" style="width: 600px; height: 50px; font-size: 20px" >
-                    </th>
-                </tr>
-            </table>
-            <input  class="btnAction" type="submit" style="margin: 50px" value="Add new issue">
-            </form>
+                                </th>
+                            </tr>
+                            </h2>
+                        </table>
+                    </h5>
+                    <button type="submit" class="btnAdd">Add new issue</button>
+                </form>
+            </div>
         </div>
     </aside>
 </div>

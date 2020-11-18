@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:custom="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:custom="http://www.w3.org/1999/xhtml"
+      xmlns:border-style="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,23 +12,21 @@
     <link th:href="@{/css/style.css}" rel="stylesheet"/>
 
 
-
     <script>
 
         function generateTable() {
             var xhttp = new XMLHttpRequest();
             var issue2 = "";
             var id = document.getElementById("box1");
-            xhttp.open("GET", "/getActuallyTasksByProjectId?projectId="+ id.options[id.selectedIndex].value, true);
+            xhttp.open("GET", "/getActuallyTasksByProjectId?projectId=" + id.options[id.selectedIndex].value, true);
             xhttp.send();
 
-            xhttp.onreadystatechange=function()
-            {
+            xhttp.onreadystatechange = function () {
                 if (this.readyState === 4 && this.status === 200) {
                     // Typical action to be performed when the document is ready:
 
-                   issue = JSON.parse(xhttp.responseText);
-                   createTable(issue);
+                    issue = JSON.parse(xhttp.responseText);
+                    createTable(issue);
                     issue2 = JSON.stringify(issue);
                 }
             }
@@ -37,7 +36,7 @@
 
         function createTable(issue) {
 
-           var issueTable = document.getElementById('issueTable');
+            var issueTable = document.getElementById('issueTable');
             issueTable.innerHTML = " <tr>\n" +
                 "<th class=\"thHeader\" width=\"300px\">id</th>\n" +
                 "<th class=\"thHeader\" width=\"300px\">Date</th>\n" +
@@ -45,27 +44,26 @@
                 "<th class=\"thHeader\" width=\"200px\">Description</th>\n" +
                 "</tr>";
 
-            console.log("wynik: "+issue[0]['level']);
-            console.log("wynik2: "+issue[0].level.toString());
-            console.log("wynik3: "+issue[0].level);
-            console.log("wynik3: "+issue[0].projectName);
-            for (var row= 0 ; row < issue.length ; row++)
-            {
+            console.log("wynik: " + issue[0]['level']);
+            console.log("wynik2: " + issue[0].level.toString());
+            console.log("wynik3: " + issue[0].level);
+            console.log("wynik3: " + issue[0].projectName);
+            for (var row = 0; row < issue.length; row++) {
                 var color = "";
-                if(issue[row].level.toString()==='MEDIUM')
-                    color="orange"
-                else if(issue[row].level.toString()==='HIGH')
-                color="red"
+                if (issue[row].level.toString() === 'MEDIUM')
+                    color = "orange"
+                else if (issue[row].level.toString() === 'HIGH')
+                    color = "red"
                 issueTable.innerHTML +=
                     '<tr>' +
-                    '<th class="thStyle" width="100px" bgcolor="'+color+'">' + issue[row].id +'</th>'+
-                    '<th class="thStyle" width="300px" bgcolor="'+color+'">' + issue[row].date.toString().substring(0,10) +'</th>'+
-                    '<th class="thStyle" width="300px" bgcolor="'+color+'">' + issue[row].progress +'</th>'+
-                    '<th class="thStyle" width="800px" bgcolor="'+color+'">' + issue[row].description +'</th>' +
+                    '<th class="thStyle" width="100px" bgcolor="' + color + '">' + issue[row].id + '</th>' +
+                    '<th class="thStyle" width="300px" bgcolor="' + color + '">' + issue[row].date.toString().substring(0, 10) + '</th>' +
+                    '<th class="thStyle" width="300px" bgcolor="' + color + '">' + issue[row].progress + '</th>' +
+                    '<th class="thStyle" width="800px" bgcolor="' + color + '">' + issue[row].description + '</th>' +
                     '<th class="thStyle" >' +
                     '<form method="get" action="/AllInfoAboutBug">' +
-                    '<input type="hidden"name="bugId" value="'+issue[row].id+'">' +
-                    '<input type="submit" class="inputMoreInf" value="More info">' +
+                    '<input type="hidden"name="bugId" value="' + issue[row].id + '">' +
+                    '<input type="submit" class="inputMoreInf" value="More informations">' +
                     '</form>' +
                     '</th>' +
                     '</tr>';
@@ -77,39 +75,42 @@
 <body>
 
 <div style="width: 100%; height: 100%; min-height: 100%; min-width: 100%">
-    <nav style="width: 100%; height: 70px;  background-color: darkgray; color: white; border-style: outset"><h1
-            style="color: lightgray">MpgaBUG </h1>
-
-
+    <nav style="width: 100%; height: 100px;  background-color: darkgray; color: white; border-style: groove ">
+        <div style="font-size: 50px"> MpgaBUG</div>
     </nav>
-    <section style="width: 15%; height: 100%; float: left; border-style: outset ;  background-color:lightgray;">
+    <section style="width: 15%; height: 100%; float: left; border-style: groove  ;  background-color:lightgray;">
         <ul><br>
             <a class="links" href="/AllBugs">All Issues</a><br>
+            <hr>
             <a class="links" href="/MyTasks">My tasks</a><br>
+            <hr>
             <a class="links" href="/CreateNewIssue">Add new issue</a><br>
+            <hr>
+            <a class="links" href="/CreateNewIssue">Log out</a><br>
         </ul>
     </section>
     <aside style="width: 85%; height: 100%; float: left; background-color:transparent;">
 
-        <h3>
-            <form action="/getActuallyTasksByProjectId" method="get">
-            <select id="box1" style=" margin: 50px; width:  20%" onchange="generateTable();" name="projectId">
-                <option value="" disabled selected>Select project</option>
-                <option th:each="project: ${projects}" th:value="${project.id}" th:text="${project.name}"  ></option>
-            </select>
-                <input type="submit" value="find tasks">
-            </form>
-        </h3>
+
+        <div class="container-top">
+            <h2>All tasks</h2>
+            <p>Please select project name.</p>
+            <hr>
+            <h3>
+                <select id="box1" style=" margin: 30px; width:  30%" onchange="generateTable();" name="projectId">
+                    <option th:each="project: ${projects}" th:value="${project.id}" th:text="${project.name}"></option>
+                </select>
+            </h3>
+        </div>
 
         <table id="issueTable" style="margin: 50px" border="1">
         </table>
-
 
     </aside>
 
 </div>
 <div>
-    <div  w3-include-HTML="AboutBug.html"></div >
+    <div w3-include-HTML="AboutBug.html"></div>
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
