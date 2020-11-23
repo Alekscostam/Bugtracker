@@ -10,6 +10,7 @@ import java.util.Set;
 @Entity
 @Getter
 @RequiredArgsConstructor
+@Table( name = "employee")
 public class Employee {
 
     @Id
@@ -19,7 +20,15 @@ public class Employee {
     private String lastName;
     private String email;
     private String password;
+    private String institutionCode;
 
+
+
+    @ManyToMany
+    Set<Project> project;
+
+    @OneToMany(mappedBy = "employee")
+    Set<Bug> bug;
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -33,27 +42,13 @@ public class Employee {
         this.email = email;
     }
 
-    public void setInstitution(Institution institutionId) {
-        this.institution = institutionId;
-    }
-
     public void setPassword(String password) {
         this.password = password;
     }
 
-    @ManyToMany
-    @JoinTable
-    Set<Bug> bugs;
+    public void setInstitutionCode(String institutionCode) {
+        this.institutionCode = institutionCode;
+    }
 
-
-    @ManyToMany
-    Set<Project> project;
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "institution_id", nullable = false)
-    private Institution institution;
-
-    @OneToMany(mappedBy = "employee")
-    Set<Bug> bug;
 
 }

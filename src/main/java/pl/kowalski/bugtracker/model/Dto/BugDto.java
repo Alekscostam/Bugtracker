@@ -1,5 +1,6 @@
 package pl.kowalski.bugtracker.model.Dto;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import pl.kowalski.bugtracker.model.Level;
 import pl.kowalski.bugtracker.model.Progress;
 
@@ -14,6 +15,15 @@ public class BugDto {
     private Progress progress;
     private String employeeName;
     private String projectName;
+    private Date lastModify;
+
+    public Date getLastModify() {
+        return lastModify;
+    }
+
+    public void setLastModify(Date lastModify) {
+        this.lastModify = lastModify;
+    }
 
     public String getEmployeeName() {
         return employeeName;

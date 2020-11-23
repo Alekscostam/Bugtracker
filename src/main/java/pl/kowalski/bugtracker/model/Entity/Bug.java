@@ -14,6 +14,7 @@ import java.util.Set;
 @Getter
 
 @RequiredArgsConstructor
+@Table( name = "bug")
 public class Bug {
 
     public Bug(Long id, String description) {
@@ -26,12 +27,15 @@ public class Bug {
     private Long id;
     @DateTimeFormat(pattern ="yyyy-MM-dd")
     private Date date;
+
+    @DateTimeFormat(pattern ="yyyy-MM-dd")
+    private Date lastModify;
+
     private Level level;
     private String description;
     private Progress progress;
 
-    @ManyToMany
-    Set<Employee> employees;
+
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name="project_id", nullable = false)
@@ -41,7 +45,9 @@ public class Bug {
     @JoinColumn(name="employee_id", nullable = false)
     private Employee employee;
 
+    public Date getLastModify() { return lastModify; }
 
+    public void setLastModify(Date lastModify) { this.lastModify = lastModify; }
 
     public Long getId() {
         return id;

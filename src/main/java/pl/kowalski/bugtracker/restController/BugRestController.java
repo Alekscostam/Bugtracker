@@ -4,25 +4,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import pl.kowalski.bugtracker.model.Dto.BugDto;
 import pl.kowalski.bugtracker.model.Entity.Bug;
-import pl.kowalski.bugtracker.model.Progress;
-import pl.kowalski.bugtracker.service.DmlBugServiceImpl;
+import pl.kowalski.bugtracker.service.DmlServiceImpl;
 import pl.kowalski.bugtracker.service.GetBugServiceImpl;
-import pl.kowalski.bugtracker.service.Interfaces.DmlBugService;
 
 import java.util.List;
 
-@org.springframework.web.bind.annotation.RestController
+@RestController
 public class BugRestController {
 
 
     private final GetBugServiceImpl getBugServiceImpl;
-    private final DmlBugServiceImpl dmlBugServiceImpl;
+    private final DmlServiceImpl dmlBugServiceImpl;
 
     @Autowired
-    public BugRestController(GetBugServiceImpl getBugServiceImpl, DmlBugServiceImpl dmlBugServiceImpl) {
+    public BugRestController(GetBugServiceImpl getBugServiceImpl, DmlServiceImpl dmlBugServiceImpl) {
         this.getBugServiceImpl = getBugServiceImpl;
         this.dmlBugServiceImpl = dmlBugServiceImpl;
     }

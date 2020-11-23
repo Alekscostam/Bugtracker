@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface BugRepository extends JpaRepository<Bug,Long> {
 
-    @Query("SELECT t FROM Bug t WHERE t.project.id = :projectId")
+    @Query("SELECT b FROM Bug b WHERE b.project.id = :projectId")
     List<Bug> findAllByProjectId(Long projectId);
 
 }

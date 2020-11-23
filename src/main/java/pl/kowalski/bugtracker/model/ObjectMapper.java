@@ -1,7 +1,9 @@
 package pl.kowalski.bugtracker.model;
 
+import pl.kowalski.bugtracker.model.Dto.EmployeeDto;
 import pl.kowalski.bugtracker.model.Entity.Bug;
 import pl.kowalski.bugtracker.model.Dto.BugDto;
+import pl.kowalski.bugtracker.model.Entity.Employee;
 
 
 public class ObjectMapper {
@@ -19,6 +21,19 @@ public class ObjectMapper {
         bugDto.setProgress(bug.getProgress());
 
         return bugDto;
+    }
+
+    public static Employee mapEmployeeDtoToEmployee(EmployeeDto employeeDto) {
+
+        Employee employee = new Employee();
+
+        employee.setEmail(employeeDto.getEmail());
+        employee.setFirstName(employeeDto.getFirstName());
+        employee.setInstitutionCode(employeeDto.getInstitutionCode());
+        employee.setLastName(employeeDto.getLastName());
+        employee.setPassword(employeeDto.getPassword());
+
+        return employee;
     }
 
 }

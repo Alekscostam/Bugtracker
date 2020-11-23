@@ -41,13 +41,7 @@ public class NavigatorController {
         return mav;
     }
 
-     @GetMapping("/Register")
-    public ModelAndView startRegister() {
 
-        ModelAndView mav = new ModelAndView("Register");
-
-        return mav;
-    }
 
     @GetMapping("/CreateNewIssue")
     public ModelAndView  startCreateIssue() {

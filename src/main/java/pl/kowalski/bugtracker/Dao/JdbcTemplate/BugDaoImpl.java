@@ -23,10 +23,10 @@ public class BugDaoImpl implements BugDao {
     public BugDto findAllInfoAboutBug(Long id) {
 
         String sql =
-                "SELECT b.id, b.date, b.description, b.level, b.progress,e.first_name,p.name " +
+                "SELECT b.id, b.date, b.last_modify, b.description, b.level, b.progress, e.first_name, e.last_name,p.name " +
                 "FROM bug b " +
-                "JOIN employee e on b.employee_id = e.id " +
-                "JOIN project p on b.project_id = p.id " +
+                "JOIN employee e ON b.employee_id = e.id " +
+                "JOIN project p ON b.project_id = p.id " +
                 "WHERE b.id='"+id+"';";
 
 
@@ -34,11 +34,12 @@ public class BugDaoImpl implements BugDao {
             BugDto bugDto = new BugDto();
             bugDto.setId(rs.getLong(1));
             bugDto.setDate(rs.getDate(2));
-            bugDto.setDescription(rs.getString(3));
-            bugDto.setLevel(Level.values()[rs.getInt(4)]);
-            bugDto.setProgress(Progress.values()[rs.getInt(5)]);
-            bugDto.setEmployeeName(rs.getString(6));
-            bugDto.setProjectName(rs.getString(7));
+            bugDto.setLastModify(rs.getDate(3));
+            bugDto.setDescription(rs.getString(4));
+            bugDto.setLevel(Level.values()[rs.getInt(5)]);
+            bugDto.setProgress(Progress.values()[rs.getInt(6)]);
+            bugDto.setEmployeeName(rs.getString(7)+" "+rs.getString(8));
+            bugDto.setProjectName(rs.getString(9));
             return bugDto;
         });
 

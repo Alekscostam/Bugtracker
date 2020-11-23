@@ -10,22 +10,35 @@
 
     <link th:href="@{/css/style.css}" rel="stylesheet"/>
 
+
+
     <script>
+
+        function loadSelect() {
+            document.getElementById('selectProgress').value=document.getElementById("progress").value;
+            document.getElementById('selectLevel').value=document.getElementById("level").value;
+        }
+
     </script>
 
 </head>
 
-<body>
+<body onload="loadSelect()">
 
 <div style="width: 100%; height: 100%; min-height: 100%; min-width: 100%">
-    <nav style="width: 100%; height: 100px;  background-color: darkgray; color: white; border-style: groove">
-        <h1 style="color: lightgray"></h1>
+    <nav style="width: 100%; height: 100px;  background-color: darkgray; color: white; border-style: groove ">
+        <div style="font-size: 50px"> MpgaBUG</div>
     </nav>
-    <section style="width: 15%; height: 100%; float: left; border-style: outset ;  background-color:lightgray;">
+    <section style="width: 13%; height: 100%; float: left; border-style: outset ;  background-color:lightgray;">
+        <div style="font-size: 50px"> MpgaBUG</div>
         <ul><br>
             <a class="links" href="/AllBugs">All Issues</a><br>
+            <hr >
             <a class="links" href="/MyTasks">My tasks</a><br>
+            <hr>
             <a class="links" href="/CreateNewIssue">Add new issue</a><br>
+            <hr>
+            <a class="links" href="/CreateNewIssue">Log out</a><br>
         </ul>
     </section>
     <aside style="width: 85%; height: 100%; float: left; background-color:transparent;">
@@ -33,54 +46,76 @@
         <div style="margin: 150px">
             <table border="1">
                 <tr>
-                    <th class="thHeader" width="300px">ID</th>
-                    <th class="thHeader" width="300px">Project</th>
-                    <th class="thHeader" width="300px">Reporter</th>
+                    <th class="thHeader" width="250px">ID</th>
+                    <th class="thHeader" width="250px">Project</th>
+                    <th class="thHeader" width="250px">Reporter</th>
+                    <th class="thHeader" width="250px">Last modify</th>
                 </tr>
                 <tr>
-                    <th class="thStyle" width="300px" th:text="${bugInfo.id}"></th>
-                    <th class="thStyle" width="300px" th:text="${bugInfo.projectName}"></th>
-                    <th class="thStyle" width="300px" th:text="${bugInfo.employeeName}"></th>
-                </tr>
-            </table>
-            <table border="1">
-                <tr>
-                    <th class="thHeader" width="450px">Level</th>
-                    <th class="thHeader" width="450px">Progress</th>
-                </tr>
-                <tr>
-                    <th class="thStyle" width="450px" th:text="${bugInfo.level}"></th>
-                    <th class="thStyle" width="450px" th:text="${bugInfo.progress}"></th>
+                    <th class="thStyle" width="250px" th:text="${bugInfo.id}"></th>
+                    <th class="thStyle" width="250px" th:text="${bugInfo.projectName}"></th>
+                    <th class="thStyle" width="250px" th:text="${bugInfo.employeeName}"></th>
+                    <th class="thStyle" width="250px" th:text="${bugInfo.lastModify}"></th>
                 </tr>
             </table>
-            <table border="1">
+            <table border="1" style="margin-top: 3px">
                 <tr>
-                    <th class="thHeader" width="900px" style="text-align: center">Employees</th>
+                    <th class="thHeader" width="1000px" style="text-align: center">Employees</th>
                 </tr>
                 <tr>
-                    <th class="thStyle" width="900px" th:text="${employeeNames}"></th>
-                </tr>
-            </table>
-            <table border="1">
-                <tr>
-                    <th class="thHeader" width="900px" style="text-align: center">Description</th>
-                </tr>
-                <tr>
-                    <th class="thStyle" width="900px" th:text="${bugInfo.description}"></th>
+                    <th class="thStyle" width="1000px" th:text="${employeeNames}"></th>
                 </tr>
             </table>
-            <table style="margin-top: 30px">
+            <table style="margin-top: 3px">
                 <tr>
-                    <th  width="450px" style="text-align: center"> <button class="btnAction">Join</button></th>
-                    <th  width="450px" style="text-align: center"> <button class="btnAction">Leave</button></th>
+                    <th class="thHeader" width="500px">Importance level</th>
+                    <th class="thHeader" width="500px">Progress</th>
+                </tr>
+                <tr>
+                    <th><select id="selectLevel" style=" height: 60px; font-size: 20px" name="level">
+                        <option> HIGH</option>
+                        <option> MEDIUM</option>
+                        <option> LOW</option>
+                    </select>
+                    </th>
+                    <th><select id="selectProgress" style=" height: 60px; font-size: 20px" name="Progress">
+                        <option> OPEN</option>
+                        <option> IN_PROGRESS</option>
+                        <option> IN_ANALYZE</option>
+                        <option> DONE</option>
+                    </select>
+                    </th>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <th class="thHeader" width="1000px" style="text-align: center">Description</th>
+                </tr>
+                <tr>
+                    <th class="thStyle" width="1000px" height="200px">
+                        <textarea name="description" style="width: 1000px; height: 200px; font-size: 20px" th:text="${bugInfo.description}">
+                        </textarea>
+                    </th>
+                </tr>
+
+            </table>
+            <table>
+                <tr>
+                    <th style="text-align: center;"> <button style="background: green" class="btnAction">Join</button></th>
+                    <th style="text-align: center;"> <button style="background: yellow" class="btnAction">Edit</button></th>
+                    <th style="text-align: center;"> <button style="background: orange" class="btnAction">Leave</button></th>
+                    <th style="text-align: center;"> <button style="background: red" class="btnAction">Delete</button></th>
                 </tr>
             </table>
         </div>
     </aside>
 </div>
+
 <div>
-    <div w3-include-HTML="AboutBug.html"></div>
+    <input id="level"  type="hidden" th:text="${bugInfo.level}" th:value="${bugInfo.level}">
+    <input id="progress" type="hidden" th:text="${bugInfo.progress}" th:value="${bugInfo.progress}">
 </div>
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
