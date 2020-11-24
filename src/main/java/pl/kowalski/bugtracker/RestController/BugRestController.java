@@ -1,4 +1,4 @@
-package pl.kowalski.bugtracker.restController;
+package pl.kowalski.bugtracker.RestController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-import pl.kowalski.bugtracker.model.Dto.BugDto;
-import pl.kowalski.bugtracker.model.Entity.Bug;
-import pl.kowalski.bugtracker.service.DmlServiceImpl;
-import pl.kowalski.bugtracker.service.GetBugServiceImpl;
+import pl.kowalski.bugtracker.Model.Dto.BugDto;
+import pl.kowalski.bugtracker.Model.Entity.Bug;
+import pl.kowalski.bugtracker.Service.DmlServiceImpl;
+import pl.kowalski.bugtracker.Service.GetBugServiceImpl;
 
 import java.util.List;
 
@@ -32,7 +32,7 @@ public class BugRestController {
     @PostMapping("/addNewIssue")
     public void addNewIssue(@ModelAttribute Bug bug) {
 
-        dmlBugServiceImpl.addNewBug(bug);
+        dmlBugServiceImpl.addBug(bug);
     }
 
     @GetMapping("/getActuallyTasksByProjectId")

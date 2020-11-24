@@ -1,14 +1,13 @@
-package pl.kowalski.bugtracker.model.Entity;
+package pl.kowalski.bugtracker.Model.Entity;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
-import pl.kowalski.bugtracker.model.Level;
-import pl.kowalski.bugtracker.model.Progress;
+import pl.kowalski.bugtracker.Model.Level;
+import pl.kowalski.bugtracker.Model.Progress;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Set;
 
 @Entity
 @Getter

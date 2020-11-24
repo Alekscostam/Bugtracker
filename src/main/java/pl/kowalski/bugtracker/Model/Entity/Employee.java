@@ -1,4 +1,4 @@
-package pl.kowalski.bugtracker.model.Entity;
+package pl.kowalski.bugtracker.Model.Entity;
 
 
 import lombok.Getter;

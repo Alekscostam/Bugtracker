@@ -1,14 +1,15 @@
-package pl.kowalski.bugtracker.service;
+package pl.kowalski.bugtracker.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import pl.kowalski.bugtracker.Dao.JdbcTemplate.EmployeeDaoImpl;
 import pl.kowalski.bugtracker.Dao.Repositories.EmployeeRepository;
-import pl.kowalski.bugtracker.model.Entity.Employee;
-import pl.kowalski.bugtracker.service.Interfaces.GetEmployeeService;
+import pl.kowalski.bugtracker.Model.Entity.Employee;
+import pl.kowalski.bugtracker.Service.Interfaces.GetEmployeeService;
 
 import java.util.List;
-import java.util.Random;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -61,24 +62,30 @@ public class GetEmployeeServiceImpl implements GetEmployeeService {
                 sb.append("-");
             }
             String code = sb.substring(0, sb.length() - 1);
-            boolean result = checkIfCodeExist(code);
+            boolean result = getInstitutionCodes().stream().anyMatch(insCode-> insCode.equals(code));
             if (!result) {
                 checker =false;
             }
         }
-
         return sb.substring(0, sb.length() - 1);
-
     }
 
-    private boolean checkIfCodeExist(String code) {
-        List<String> institutionCodes = getInstitutionCodes();
-        return institutionCodes.stream().anyMatch(insCode -> insCode.equals(code));
-    }
 
     @Override
     public boolean checkUserHaveThisTask(Long bugId, Employee employee) {
         return false;
+    }
+
+    @Override
+    public boolean userExists(String email) {
+
+        return employeeRepository.findAll().stream().anyMatch(employees -> employees.getEmail().equals(email));
+    }
+
+    @Override
+    public Optional<Employee> findEmployeeByEmail(String email) {
+        return employeeRepository.findEmployeeByEmail(email);
+
     }
 
 

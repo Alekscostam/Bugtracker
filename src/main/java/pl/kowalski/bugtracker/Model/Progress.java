@@ -1,4 +1,4 @@
-package pl.kowalski.bugtracker.model;
+package pl.kowalski.bugtracker.Model;
 
 public enum  Progress {
 

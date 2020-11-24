@@ -1,4 +1,4 @@
--- INSERT INTO Institution(code,name,description) VALUES('6139817827837182','ALKOWBUG','computer-science');
+-- INSERT INTO Institution(code) VALUES('85bDT-PZc1M-or5Vr-kmRQR');
 
 INSERT INTO project(name,date,description) VALUES('Project 1','1997-08-24','Bug tracker project1');
 INSERT INTO project(name,date,description) VALUES('Project 2','2020-10-24','Bug tracker project2');

@@ -1,8 +1,7 @@
-package pl.kowalski.bugtracker.model.Dto;
+package pl.kowalski.bugtracker.Model.Dto;
 
-import org.springframework.format.annotation.DateTimeFormat;
-import pl.kowalski.bugtracker.model.Level;
-import pl.kowalski.bugtracker.model.Progress;
+import pl.kowalski.bugtracker.Model.Level;
+import pl.kowalski.bugtracker.Model.Progress;
 
 import java.util.Date;
 

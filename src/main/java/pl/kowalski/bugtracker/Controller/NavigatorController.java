@@ -4,11 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
-import pl.kowalski.bugtracker.model.Dto.BugDto;
-import pl.kowalski.bugtracker.model.Entity.Project;
-import pl.kowalski.bugtracker.service.GetBugServiceImpl;
-import pl.kowalski.bugtracker.service.GetEmployeeServiceImpl;
-import pl.kowalski.bugtracker.service.GetProjectServiceImpl;
+import pl.kowalski.bugtracker.Model.Dto.BugDto;
+import pl.kowalski.bugtracker.Model.Entity.Project;
+import pl.kowalski.bugtracker.Service.GetBugServiceImpl;
+import pl.kowalski.bugtracker.Service.GetEmployeeServiceImpl;
+import pl.kowalski.bugtracker.Service.GetProjectServiceImpl;
 
 import java.util.List;
 
@@ -29,7 +29,7 @@ public class NavigatorController {
 
     @GetMapping("/")
     public String start() {
-        return "redirect:Register";
+        return "redirect:Login";
     }
 
     @GetMapping("/AllBugs")

@@ -1,10 +1,10 @@
-package pl.kowalski.bugtracker.service;
+package pl.kowalski.bugtracker.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.kowalski.bugtracker.Dao.Repositories.ProjectRepository;
-import pl.kowalski.bugtracker.model.Entity.Project;
-import pl.kowalski.bugtracker.service.Interfaces.GetProjectService;
+import pl.kowalski.bugtracker.Model.Entity.Project;
+import pl.kowalski.bugtracker.Service.Interfaces.GetProjectService;
 
 import java.util.List;
 

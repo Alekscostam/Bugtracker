@@ -1,4 +1,4 @@
-package pl.kowalski.bugtracker.model.Dto;
+package pl.kowalski.bugtracker.Model.Dto;
 
 
 import java.util.Objects;

@@ -1,14 +1,14 @@
-package pl.kowalski.bugtracker.service;
+package pl.kowalski.bugtracker.Service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.kowalski.bugtracker.Dao.JdbcTemplate.BugDaoImpl;
-import pl.kowalski.bugtracker.model.ObjectMapper;
+import pl.kowalski.bugtracker.Model.ObjectMapper;
 import pl.kowalski.bugtracker.Dao.Repositories.BugRepository;
-import pl.kowalski.bugtracker.model.Entity.Bug;
-import pl.kowalski.bugtracker.model.Dto.BugDto;
-import pl.kowalski.bugtracker.service.Interfaces.GetBugService;
+import pl.kowalski.bugtracker.Model.Entity.Bug;
+import pl.kowalski.bugtracker.Model.Dto.BugDto;
+import pl.kowalski.bugtracker.Service.Interfaces.GetBugService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +26,7 @@ public class GetBugServiceImpl implements GetBugService {
     }
 
 
+    @Override
     public List<BugDto> getAllBugsByProjectId(Long projectId) {
         List<Bug> allByProjectId = bugRepository.findAllByProjectId(projectId);
         List<Bug> all = bugRepository.findAll();
@@ -35,10 +36,12 @@ public class GetBugServiceImpl implements GetBugService {
         return bugDtoList;
     }
 
+    @Override
     public BugDto getInfoAboutBug( Long id) {
         return getBugDao.findAllInfoAboutBug(id);
     }
 
+    @Override
     public List<Bug> findAllTasks() {
 
         return bugRepository.findAll();

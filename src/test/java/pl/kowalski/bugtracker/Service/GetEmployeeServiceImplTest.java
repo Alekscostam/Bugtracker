@@ -1,4 +1,4 @@
-package pl.kowalski.bugtracker.service;
+package pl.kowalski.bugtracker.Service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

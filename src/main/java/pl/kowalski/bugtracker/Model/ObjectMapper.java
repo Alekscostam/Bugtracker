@@ -1,9 +1,9 @@
-package pl.kowalski.bugtracker.model;
+package pl.kowalski.bugtracker.Model;
 
-import pl.kowalski.bugtracker.model.Dto.EmployeeDto;
-import pl.kowalski.bugtracker.model.Entity.Bug;
-import pl.kowalski.bugtracker.model.Dto.BugDto;
-import pl.kowalski.bugtracker.model.Entity.Employee;
+import pl.kowalski.bugtracker.Model.Dto.EmployeeDto;
+import pl.kowalski.bugtracker.Model.Entity.Bug;
+import pl.kowalski.bugtracker.Model.Dto.BugDto;
+import pl.kowalski.bugtracker.Model.Entity.Employee;
 
 
 public class ObjectMapper {

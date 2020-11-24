@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import pl.kowalski.bugtracker.Dao.JdbcTemplate.Interfaces.BugDao;
-import pl.kowalski.bugtracker.model.Dto.BugDto;
-import pl.kowalski.bugtracker.model.Level;
-import pl.kowalski.bugtracker.model.Progress;
+import pl.kowalski.bugtracker.Model.Dto.BugDto;
+import pl.kowalski.bugtracker.Model.Level;
+import pl.kowalski.bugtracker.Model.Progress;
 
 
 @Component

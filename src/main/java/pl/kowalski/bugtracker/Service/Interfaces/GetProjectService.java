@@ -1,6 +1,6 @@
-package pl.kowalski.bugtracker.service.Interfaces;
+package pl.kowalski.bugtracker.Service.Interfaces;
 
-import pl.kowalski.bugtracker.model.Entity.Project;
+import pl.kowalski.bugtracker.Model.Entity.Project;
 
 import java.util.List;
 

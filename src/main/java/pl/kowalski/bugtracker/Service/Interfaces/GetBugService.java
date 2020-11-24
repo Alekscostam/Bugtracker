@@ -1,7 +1,7 @@
-package pl.kowalski.bugtracker.service.Interfaces;
+package pl.kowalski.bugtracker.Service.Interfaces;
 
-import pl.kowalski.bugtracker.model.Dto.BugDto;
-import pl.kowalski.bugtracker.model.Entity.Bug;
+import pl.kowalski.bugtracker.Model.Dto.BugDto;
+import pl.kowalski.bugtracker.Model.Entity.Bug;
 
 import java.util.List;
 

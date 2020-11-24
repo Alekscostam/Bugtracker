@@ -1,13 +1,10 @@
-package pl.kowalski.bugtracker.restController;
+package pl.kowalski.bugtracker.RestController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.kowalski.bugtracker.Dao.JdbcTemplate.EmployeeDaoImpl;
-import pl.kowalski.bugtracker.model.Entity.Employee;
-import pl.kowalski.bugtracker.service.DmlServiceImpl;
-import pl.kowalski.bugtracker.service.GetEmployeeServiceImpl;
+import pl.kowalski.bugtracker.Service.DmlServiceImpl;
+import pl.kowalski.bugtracker.Service.GetEmployeeServiceImpl;
 
 @RestController
 public class EmployeeRestController {
