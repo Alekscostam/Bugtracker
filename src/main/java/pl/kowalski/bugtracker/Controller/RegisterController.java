@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import pl.kowalski.bugtracker.Model.Dto.EmployeeDto;
+import pl.kowalski.bugtracker.Model.Entity.Employee;
 import pl.kowalski.bugtracker.Service.DmlServiceImpl;
 import pl.kowalski.bugtracker.Service.GetEmployeeServiceImpl;
+
+import java.util.Optional;
 
 @Controller
 public class RegisterController {
@@ -44,7 +47,6 @@ public class RegisterController {
     }
 
 
-    // TODO: 23.11.2020 Bcrypt
 
     @PostMapping("/Register")
     public ModelAndView postRegister(EmployeeDto employeeDto) {
@@ -64,8 +66,8 @@ public class RegisterController {
         else {
 
             if (employeeDto.getrPassword().equals(employeeDto.getPassword())) {
-                boolean userExists = getEmployeeService.userExists(employeeDto.getEmail());
-                if (!userExists) {
+                Optional<Employee> employeeExist = getEmployeeService.findEmployeeByEmail(employeeDto.getEmail());
+                if (employeeExist.isEmpty()) {
                     dmlService.register(employeeDto);
                     message = "success!";
                     mav.setViewName("redirect:/Login");
@@ -78,6 +80,8 @@ public class RegisterController {
             }
 
         }
+
+
 
         mav.addObject("employeeDto", employeeDto);
         mav.addObject("message", message);

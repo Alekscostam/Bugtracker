@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.kowalski.bugtracker.Dao.Repositories.ProjectRepository;
 import pl.kowalski.bugtracker.Model.Entity.Project;
-import pl.kowalski.bugtracker.Service.Interfaces.GetProjectService;
 
 import java.util.List;
 

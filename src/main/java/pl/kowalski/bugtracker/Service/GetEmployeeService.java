@@ -1,4 +1,4 @@
-package pl.kowalski.bugtracker.Service.Interfaces;
+package pl.kowalski.bugtracker.Service;
 
 import pl.kowalski.bugtracker.Model.Entity.Employee;
 
@@ -14,7 +14,7 @@ public interface GetEmployeeService{
    String generateInstitutionCode();
 
    boolean checkUserHaveThisTask(Long bugId, Employee employee);
-   boolean userExists(String email);
+
    Optional<Employee> findEmployeeByEmail(String email);
 
 }

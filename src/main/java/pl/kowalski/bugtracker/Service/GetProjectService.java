@@ -1,4 +1,4 @@
-package pl.kowalski.bugtracker.Service.Interfaces;
+package pl.kowalski.bugtracker.Service;
 
 import pl.kowalski.bugtracker.Model.Entity.Project;
 

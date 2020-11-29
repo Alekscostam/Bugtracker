@@ -4,14 +4,14 @@ INSERT INTO project(name,date,description) VALUES('Project 1','1997-08-24','Bug 
 INSERT INTO project(name,date,description) VALUES('Project 2','2020-10-24','Bug tracker project2');
 INSERT INTO project(name,date,description) VALUES('Project 3','2020-08-24','Bug tracker project3');
 
-INSERT INTO employee(first_name,last_name,email,institution_code) VALUES('Aleksander','Kowalski','kowalski.al@wp.pl','85bDT-PZc1M-or5Vr-kmRQR');
-INSERT INTO employee(first_name,last_name,email,institution_code) VALUES('Employee 1','Employee last1','Employee@wp.pl1','85bDT-PZc1M-or5Vr-kmRQR');
-INSERT INTO employee(first_name,last_name,email,institution_code) VALUES('Employee 2','Employee last1','Employee@wp.pl1','85bDT-PZc1M-or5Vr-kmRQR');
-INSERT INTO employee(first_name,last_name,email,institution_code) VALUES('Employee 3','Employee last1','Employee@wp.pl1','85bDT-PZc1M-or5Vr-kmRQR');
-INSERT INTO employee(first_name,last_name,email,institution_code) VALUES('Employee 5','Employee last1','Employee@wp.pl1','85bDT-PZc1M-or5Vr-kmRQR');
-INSERT INTO employee(first_name,last_name,email,institution_code) VALUES('Employee 6','Employee last1','Employee@wp.pl1','85bDT-PZc1M-or5Vr-kmRQR');
-INSERT INTO employee(first_name,last_name,email,institution_code) VALUES('Employee 7','Employee last1','Employee@wp.pl1','85bDT-PZc1M-or5Vr-kmRQR');
-INSERT INTO employee(first_name,last_name,email,institution_code) VALUES('Employee 8','Employee last1','Employee@wp.pl1','85bDT-PZc1M-or5Vr-kmRQR');
+INSERT INTO employee(first_name,last_name,email,password,institution_code) VALUES('Aleksander','Kowalski','kowalski.al@wp.pl','123','85bDT-PZc1M-or5Vr-kmRQR');
+INSERT INTO employee(first_name,last_name,email,password,institution_code) VALUES('Employee 1','Employee last1','Employee@wp.pl1','sadsd','85bDT-PZc1M-or5Vr-kmRQR');
+INSERT INTO employee(first_name,last_name,email,password,institution_code) VALUES('Employee 2','Employee last1','Employee@wp.pl1','sadsd','85bDT-PZc1M-or5Vr-kmRQR');
+INSERT INTO employee(first_name,last_name,email,password,institution_code) VALUES('Employee 3','Employee last1','Employee@wp.pl1','sadsd','85bDT-PZc1M-or5Vr-kmRQR');
+INSERT INTO employee(first_name,last_name,email,password,institution_code) VALUES('Employee 5','Employee last1','Employee@wp.pl1','sadsd','85bDT-PZc1M-or5Vr-kmRQR');
+INSERT INTO employee(first_name,last_name,email,password,institution_code) VALUES('Employee 6','Employee last1','Employee@wp.pl1','sadsd','85bDT-PZc1M-or5Vr-kmRQR');
+INSERT INTO employee(first_name,last_name,email,password,institution_code) VALUES('Employee 7','Employee last1','Employee@wp.pl1','sadsd','85bDT-PZc1M-or5Vr-kmRQR');
+INSERT INTO employee(first_name,last_name,email,password,institution_code) VALUES('Employee 8','Employee last1','Employee@wp.pl1','sadsd','85bDT-PZc1M-or5Vr-kmRQR');
 
 
 

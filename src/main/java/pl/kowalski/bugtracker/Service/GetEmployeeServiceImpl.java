@@ -1,12 +1,10 @@
 package pl.kowalski.bugtracker.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import pl.kowalski.bugtracker.Dao.JdbcTemplate.EmployeeDaoImpl;
 import pl.kowalski.bugtracker.Dao.Repositories.EmployeeRepository;
 import pl.kowalski.bugtracker.Model.Entity.Employee;
-import pl.kowalski.bugtracker.Service.Interfaces.GetEmployeeService;
 
 import java.util.List;
 import java.util.Optional;
@@ -76,11 +74,7 @@ public class GetEmployeeServiceImpl implements GetEmployeeService {
         return false;
     }
 
-    @Override
-    public boolean userExists(String email) {
 
-        return employeeRepository.findAll().stream().anyMatch(employees -> employees.getEmail().equals(email));
-    }
 
     @Override
     public Optional<Employee> findEmployeeByEmail(String email) {

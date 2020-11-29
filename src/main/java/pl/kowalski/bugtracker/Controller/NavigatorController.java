@@ -1,8 +1,11 @@
 package pl.kowalski.bugtracker.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import pl.kowalski.bugtracker.Model.Dto.BugDto;
 import pl.kowalski.bugtracker.Model.Entity.Project;
@@ -10,10 +13,15 @@ import pl.kowalski.bugtracker.Service.GetBugServiceImpl;
 import pl.kowalski.bugtracker.Service.GetEmployeeServiceImpl;
 import pl.kowalski.bugtracker.Service.GetProjectServiceImpl;
 
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
-public class NavigatorController {
+public class NavigatorController    {
 
 
     private final GetBugServiceImpl getBugServiceImpl;
@@ -29,11 +37,11 @@ public class NavigatorController {
 
     @GetMapping("/")
     public String start() {
-        return "redirect:Login";
+        return "redirect:Register";
     }
 
     @GetMapping("/AllBugs")
-    public ModelAndView startMyTasks() {
+    public ModelAndView startMyTasks(String email) {
 
         ModelAndView mav = new ModelAndView("AllBugs");
         List<Project> projectList = getProjectServiceImpl.findAllProjects();
@@ -80,16 +88,20 @@ public class NavigatorController {
         return mav;
     }
 
+
+
     @GetMapping("/Login")
-    public ModelAndView startLoginPage( ) {
-        ModelAndView mav = new ModelAndView("Login");
-        return mav;
+    public String startLoginPage( ) {
+        return "Login";
     }
+
+
     @GetMapping("/AddInstitution")
     public ModelAndView startAddInstitutionPage( ) {
         ModelAndView mav = new ModelAndView("AddInstitution");
         return mav;
     }
+
 
 
 }

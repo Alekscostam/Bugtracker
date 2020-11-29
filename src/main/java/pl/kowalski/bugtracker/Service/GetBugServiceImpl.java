@@ -8,7 +8,6 @@ import pl.kowalski.bugtracker.Model.ObjectMapper;
 import pl.kowalski.bugtracker.Dao.Repositories.BugRepository;
 import pl.kowalski.bugtracker.Model.Entity.Bug;
 import pl.kowalski.bugtracker.Model.Dto.BugDto;
-import pl.kowalski.bugtracker.Service.Interfaces.GetBugService;
 
 import java.util.ArrayList;
 import java.util.List;

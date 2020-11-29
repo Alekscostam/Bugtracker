@@ -22,7 +22,7 @@
 <div style="width: 100%; height: 100%; min-height: 100%; min-width: 100%" align="center">
 
 
-    <form autocomplete="off" action="/AllBugs"  align="center">
+    <form autocomplete="off" method="post" th:action="@{/Login}"  align="center">
         <div class="container">
             <h1>Login page</h1>
             <p>Please fill in this form to Log In.</p>
@@ -31,11 +31,11 @@
                 <table style="margin-top: 50px;  text-align: left;" align="center">
                     <tr>
                         <th> Password</th>
-                        <th><input id="psw-repeat" placeholder="Enter Password" type="password"/></th>
+                        <th><input id="psw-repeat" placeholder="Enter Password" name="password"  type="password"/></th>
                     </tr>
                     <tr>
                         <th> Email</th>
-                        <th><input id="email" placeholder="Enter Email" type="email"/></th>
+                        <th><input id="email" type="email" name="email" placeholder="Enter Email" /></th>
                     </tr>
                 </table>
                 <br>
