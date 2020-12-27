@@ -1,4 +1,4 @@
-package pl.kowalski.bugtracker.Dao.JdbcTemplate.Interfaces;
+package pl.kowalski.bugtracker.Dao;
 
 import pl.kowalski.bugtracker.Model.Dto.BugDto;
 

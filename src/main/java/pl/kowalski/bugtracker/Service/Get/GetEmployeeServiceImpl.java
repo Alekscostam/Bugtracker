@@ -1,9 +1,9 @@
-package pl.kowalski.bugtracker.Service;
+package pl.kowalski.bugtracker.Service.Get;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.kowalski.bugtracker.Dao.JdbcTemplate.EmployeeDaoImpl;
-import pl.kowalski.bugtracker.Dao.Repositories.EmployeeRepository;
+import pl.kowalski.bugtracker.Dao.EmployeeDaoImpl;
+import pl.kowalski.bugtracker.Repositories.EmployeeRepository;
 import pl.kowalski.bugtracker.Model.Entity.Employee;
 
 import java.util.List;
@@ -42,27 +42,28 @@ public class GetEmployeeServiceImpl implements GetEmployeeService {
     @Override
     public String generateInstitutionCode() {
 
-        boolean checker = true;
+        boolean codeFinder = true;
 
-        String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+        String alphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 + "0123456789"
                 + "abcdefghijklmnopqrstuvxyz";
 
         StringBuilder sb = new StringBuilder();
-        while (checker) {
+        while (codeFinder) {
             for (int j = 0; j < 5; j++) {
                 for (int i = 0; i < 5; i++) {
 
-                    int index = (int) (AlphaNumericString.length() * Math.random());
+                    int index = (int) (alphaNumericString.length() * Math.random());
 
-                    sb.append(AlphaNumericString.charAt(index));
+                    sb.append(alphaNumericString.charAt(index));
                 }
                 sb.append("-");
             }
             String code = sb.substring(0, sb.length() - 1);
             boolean result = getInstitutionCodes().stream().anyMatch(insCode-> insCode.equals(code));
             if (!result) {
-                checker =false;
+                codeFinder =false;
             }
         }
         return sb.substring(0, sb.length() - 1);
@@ -75,9 +76,9 @@ public class GetEmployeeServiceImpl implements GetEmployeeService {
     }
 
 
-
     @Override
     public Optional<Employee> findEmployeeByEmail(String email) {
+
         return employeeRepository.findEmployeeByEmail(email);
 
     }

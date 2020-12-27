@@ -17,7 +17,7 @@
         function generateTable() {
             var xhttp = new XMLHttpRequest();
 
-            var id = document.getElementById("box1");
+            var id = document.getElementById("selectProject");
             xhttp.open("GET", "/getActuallyTasksByProjectId?projectId=" + id.options[id.selectedIndex].value, true);
             xhttp.send();
 
@@ -31,6 +31,15 @@
             }
         }
 
+        function checkData() {
+
+            obj = document.getElementsByClassName("alert").text;
+
+            if (obj === null || obj === '') {
+                document.getElementById("selectProject").style.visibility = 'visible';
+            }
+        }
+
         function createTable(issue) {
 
             var issueTable = document.getElementById('issueTable');
@@ -41,10 +50,6 @@
                 "<th class=\"thHeader\" width=\"200px\">Description</th>\n" +
                 "</tr>";
 
-            console.log("wynik: " + issue[0]['level']);
-            console.log("wynik2: " + issue[0].level.toString());
-            console.log("wynik3: " + issue[0].level);
-            console.log("wynik3: " + issue[0].projectName);
             for (var row = 0; row < issue.length; row++) {
                 var color = "";
                 if (issue[row].level.toString() === 'MEDIUM')
@@ -69,25 +74,27 @@
     </script>
 </head>
 
-<body>
+<body onload="checkData()">
 
 <div style="width: 100%; height: 100%; min-height: 100%; min-width: 100%">
     <nav style="width: 100%; height: 100px;  background-color: darkgray; color: white; border-style: groove ">
         <div style="font-size: 50px"> MpgaBUG</div>
+
     </nav>
-    <section style="width: 13%; height: 100%; float: left; border-style: groove;  background-color:lightgray;">
-        <ul>
-            <br>
-            <a class="links" href="/AllBugs">My account</a><br>
-            <hr>
-            <a class="links" href="/AllBugs">All Issues</a><br>
-            <hr>
-            <a class="links" href="/MyTasks">My tasks</a><br>
-            <hr>
-            <a class="links" href="/CreateNewIssue">Add new issue</a><br>
-            <hr>
-            <a class="links" href="/CreateNewIssue">Log out</a><br>
-        </ul>
+    <section style="width: 13%;  height: 100%; float: left; border-style: groove;  background-color:lightgray;">
+        <a class="links" href="/AllBugs"> My account</a><br>
+        <hr>
+        <a class="links" href="/AllBugs"> All Issues</a><br>
+        <hr>
+        <a class="links" href="/MyTasks"> My tasks</a><br>
+        <hr>
+        <a class="links" href="/CreateNewIssue"> Add new issue</a><br>
+        <hr>
+
+        <form name="logoutForm" th:action="@{/logout}" method="post">
+            <input type="submit" style="border: none; margin-left: 50px; width: 120px; text-align: center; font-size: 24px; color: #17a2b8;
+                 float: left; background: none;" value="Sign Out"/>
+        </form>
     </section>
     <aside style="width: 85%; height: 100%; float: left; background-color:transparent;">
 
@@ -95,16 +102,19 @@
             <h2>All tasks</h2>
             <p>Please select project name.</p>
             <hr>
+            <label class="alert" style="font-size: 25px; color: red" th:text="${message}"></label>
             <h3>
-                <select id="box1" style=" margin: 30px; width:  30%" onchange="generateTable();" name="projectId">
-                    <option th:each="project: ${projects}" th:value="${project.id}" th:text="${project.name}"></option>
+                <select id="selectProject" style=" margin: 30px; width:  30%; visibility: hidden" onchange="generateTable();"
+                        name="projectId">
+                    <option class="option" th:each="project: ${projects}" th:value="${project.id}"
+                            th:text="${project.name}"></option>
                 </select>
             </h3>
         </div>
 
-        <table id="issueTable" style="margin: 50px" border="1">
-        </table>
 
+        <table id="issueTable"  style="margin: 50px; " border="1">
+        </table>
     </aside>
 
 </div>

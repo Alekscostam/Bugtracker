@@ -20,6 +20,7 @@ public class Project {
     private String name;
     private Date date;
     private String description;
+    private String institutionCode;
 
     public void setName(String name) {
         this.name = name;

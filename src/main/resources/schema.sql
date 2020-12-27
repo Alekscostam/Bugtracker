@@ -13,7 +13,8 @@ create table project
     id          bigserial not null constraint project_pkey primary key,
     date        timestamp,
     description varchar(255),
-    name        varchar(255)
+    name        varchar(255),
+    institution_code    varchar(255)
 );
 
 

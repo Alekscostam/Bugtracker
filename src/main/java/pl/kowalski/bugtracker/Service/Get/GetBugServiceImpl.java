@@ -1,11 +1,11 @@
-package pl.kowalski.bugtracker.Service;
+package pl.kowalski.bugtracker.Service.Get;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.kowalski.bugtracker.Dao.JdbcTemplate.BugDaoImpl;
-import pl.kowalski.bugtracker.Model.ObjectMapper;
-import pl.kowalski.bugtracker.Dao.Repositories.BugRepository;
+import pl.kowalski.bugtracker.Dao.BugDaoImpl;
+import pl.kowalski.bugtracker.Service.ObjectMapper;
+import pl.kowalski.bugtracker.Repositories.BugRepository;
 import pl.kowalski.bugtracker.Model.Entity.Bug;
 import pl.kowalski.bugtracker.Model.Dto.BugDto;
 

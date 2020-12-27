@@ -1,4 +1,4 @@
-package pl.kowalski.bugtracker.Service;
+package pl.kowalski.bugtracker.Service.Get;
 
 import pl.kowalski.bugtracker.Model.Dto.BugDto;
 import pl.kowalski.bugtracker.Model.Entity.Bug;

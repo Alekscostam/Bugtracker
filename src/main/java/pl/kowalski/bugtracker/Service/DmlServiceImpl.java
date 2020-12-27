@@ -3,13 +3,17 @@ package pl.kowalski.bugtracker.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import pl.kowalski.bugtracker.Dao.Repositories.BugRepository;
-import pl.kowalski.bugtracker.Dao.Repositories.EmployeeRepository;
+import pl.kowalski.bugtracker.Repositories.BugRepository;
+import pl.kowalski.bugtracker.Repositories.EmployeeRepository;
 import pl.kowalski.bugtracker.Model.Dto.EmployeeDto;
 import pl.kowalski.bugtracker.Model.Entity.Bug;
 import pl.kowalski.bugtracker.Model.Entity.Employee;
-import pl.kowalski.bugtracker.Model.ObjectMapper;
 import pl.kowalski.bugtracker.Model.Progress;
+import pl.kowalski.bugtracker.Service.Get.GetEmployeeServiceImpl;
+
+import java.security.Principal;
+import java.util.Date;
+import java.util.Optional;
 
 @Service
 public class DmlServiceImpl implements DmlService {
@@ -17,18 +21,31 @@ public class DmlServiceImpl implements DmlService {
     private final BugRepository bugRepository;
     private final EmployeeRepository employeeRepository;
     private final BCryptPasswordEncoder passwordEncoder;
+    private final GetEmployeeServiceImpl getEmployeeService;
 
     @Autowired
-    public DmlServiceImpl(BugRepository bugRepository, EmployeeRepository employeeRepository, BCryptPasswordEncoder passwordEncoder) {
+    public DmlServiceImpl(BugRepository bugRepository, EmployeeRepository employeeRepository, BCryptPasswordEncoder passwordEncoder, GetEmployeeServiceImpl getEmployeeService) {
         this.bugRepository = bugRepository;
         this.employeeRepository = employeeRepository;
         this.passwordEncoder = passwordEncoder;
+        this.getEmployeeService = getEmployeeService;
     }
 
     @Override
-    public void addBug(Bug bug) {
-        bug.setProgress(Progress.OPEN);
-        bugRepository.save(bug);
+    public boolean postBug(Bug bug, Principal principal) {
+        Optional<Employee> employeeByEmail = getEmployeeService.findEmployeeByEmail(principal.getName());
+
+        if (employeeByEmail.isPresent()) {
+
+            Date date  = new Date(System.currentTimeMillis());
+            bug.setEmployeeId(employeeByEmail.get());
+            bug.setDate(date);
+            bug.setLastModify(date);
+            bug.setProgress(Progress.OPEN);
+            bugRepository.save(bug);
+            return true;
+        }
+        return false;
     }
 
     @Override

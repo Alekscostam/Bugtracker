@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.kowalski.bugtracker.Service.DmlServiceImpl;
-import pl.kowalski.bugtracker.Service.GetEmployeeServiceImpl;
+import pl.kowalski.bugtracker.Service.Get.GetEmployeeServiceImpl;
 
 @RestController
 public class EmployeeRestController {

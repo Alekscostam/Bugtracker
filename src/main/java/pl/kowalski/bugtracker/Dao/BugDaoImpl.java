@@ -1,9 +1,8 @@
-package pl.kowalski.bugtracker.Dao.JdbcTemplate;
+package pl.kowalski.bugtracker.Dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
-import pl.kowalski.bugtracker.Dao.JdbcTemplate.Interfaces.BugDao;
 import pl.kowalski.bugtracker.Model.Dto.BugDto;
 import pl.kowalski.bugtracker.Model.Level;
 import pl.kowalski.bugtracker.Model.Progress;
@@ -12,7 +11,7 @@ import pl.kowalski.bugtracker.Model.Progress;
 @Component
 public class BugDaoImpl implements BugDao {
 
-    JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     @Autowired
     public BugDaoImpl(JdbcTemplate jdbcTemplate) {

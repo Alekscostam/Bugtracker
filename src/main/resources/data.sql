@@ -1,8 +1,8 @@
 -- INSERT INTO Institution(code) VALUES('85bDT-PZc1M-or5Vr-kmRQR');
 
-INSERT INTO project(name,date,description) VALUES('Project 1','1997-08-24','Bug tracker project1');
-INSERT INTO project(name,date,description) VALUES('Project 2','2020-10-24','Bug tracker project2');
-INSERT INTO project(name,date,description) VALUES('Project 3','2020-08-24','Bug tracker project3');
+INSERT INTO project(name,date,description,institution_code) VALUES('Project 1','1997-08-24','Bug tracker project1','85bDT-PZc1M-or5Vr-kmRQR');
+INSERT INTO project(name,date,description,institution_code) VALUES('Project 2','2020-10-24','Bug tracker project2','85bDT-PZc1M-or5Vr-kmRQR');
+INSERT INTO project(name,date,description,institution_code) VALUES('Project 3','2020-08-24','Bug tracker project3','85bDT-PZc1M-or5Vr-kmRQR');
 
 INSERT INTO employee(first_name,last_name,email,password,institution_code) VALUES('Aleksander','Kowalski','kowalski.al@wp.pl','123','85bDT-PZc1M-or5Vr-kmRQR');
 INSERT INTO employee(first_name,last_name,email,password,institution_code) VALUES('Employee 1','Employee last1','Employee@wp.pl1','sadsd','85bDT-PZc1M-or5Vr-kmRQR');
@@ -11,7 +11,7 @@ INSERT INTO employee(first_name,last_name,email,password,institution_code) VALUE
 INSERT INTO employee(first_name,last_name,email,password,institution_code) VALUES('Employee 5','Employee last1','Employee@wp.pl1','sadsd','85bDT-PZc1M-or5Vr-kmRQR');
 INSERT INTO employee(first_name,last_name,email,password,institution_code) VALUES('Employee 6','Employee last1','Employee@wp.pl1','sadsd','85bDT-PZc1M-or5Vr-kmRQR');
 INSERT INTO employee(first_name,last_name,email,password,institution_code) VALUES('Employee 7','Employee last1','Employee@wp.pl1','sadsd','85bDT-PZc1M-or5Vr-kmRQR');
-INSERT INTO employee(first_name,last_name,email,password,institution_code) VALUES('Employee 8','Employee last1','Employee@wp.pl1','sadsd','85bDT-PZc1M-or5Vr-kmRQR');
+INSERT INTO employee(first_name,last_name,email,password,institution_code) VALUES('asd','asd','asd@wp.pl','$2a$10$IZv9QCL212u3e3rlpbAqJ.2STaiJ2tdnpLdRkypxQclE2xN5QdbgW','$2a$10$IZv9QCL212u3e3rlpbAqJ.2STaiJ2tdnpLdRkypxQclE2xN5QdbgW');
 
 
 

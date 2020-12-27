@@ -2,7 +2,7 @@ package pl.kowalski.bugtracker.RestController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import pl.kowalski.bugtracker.Dao.Repositories.ProjectRepository;
+import pl.kowalski.bugtracker.Repositories.ProjectRepository;
 import pl.kowalski.bugtracker.Model.Entity.Project;
 
 import java.util.List;

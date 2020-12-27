@@ -1,27 +1,23 @@
 package pl.kowalski.bugtracker.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import pl.kowalski.bugtracker.Model.Dto.BugDto;
+import pl.kowalski.bugtracker.Model.Entity.Employee;
 import pl.kowalski.bugtracker.Model.Entity.Project;
-import pl.kowalski.bugtracker.Service.GetBugServiceImpl;
-import pl.kowalski.bugtracker.Service.GetEmployeeServiceImpl;
-import pl.kowalski.bugtracker.Service.GetProjectServiceImpl;
+import pl.kowalski.bugtracker.Service.EmailNotFoundException;
+import pl.kowalski.bugtracker.Service.Get.GetBugServiceImpl;
+import pl.kowalski.bugtracker.Service.Get.GetEmployeeServiceImpl;
+import pl.kowalski.bugtracker.Service.Get.GetProjectServiceImpl;
 
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
-public class NavigatorController    {
+public class MenuController {
 
 
     private final GetBugServiceImpl getBugServiceImpl;
@@ -29,7 +25,7 @@ public class NavigatorController    {
     private final GetProjectServiceImpl getProjectServiceImpl;
 
     @Autowired
-    public NavigatorController(GetBugServiceImpl getBugServiceImpl, GetEmployeeServiceImpl getEmployeeServiceImpl, GetProjectServiceImpl getProjectServiceImpl) {
+    public MenuController(GetBugServiceImpl getBugServiceImpl, GetEmployeeServiceImpl getEmployeeServiceImpl, GetProjectServiceImpl getProjectServiceImpl) {
         this.getBugServiceImpl = getBugServiceImpl;
         this.getEmployeeServiceImpl = getEmployeeServiceImpl;
         this.getProjectServiceImpl = getProjectServiceImpl;
@@ -41,10 +37,19 @@ public class NavigatorController    {
     }
 
     @GetMapping("/AllBugs")
-    public ModelAndView startMyTasks(String email) {
+    public ModelAndView startMyTasks(Principal principal) {
 
         ModelAndView mav = new ModelAndView("AllBugs");
-        List<Project> projectList = getProjectServiceImpl.findAllProjects();
+        Optional<Employee> employeeByEmail = getEmployeeServiceImpl.findEmployeeByEmail(principal.getName());
+
+        if (employeeByEmail.isEmpty())
+            throw new EmailNotFoundException("Something goes wrong... User is not present after log in");
+
+        List<Project> projectList = getProjectServiceImpl.findAllProjectsByCode(employeeByEmail.get().getEmail());
+
+        if(projectList.isEmpty())
+            mav.addObject("message", "No projects were found!");
+
         mav.addObject("projects", projectList);
         return mav;
     }
@@ -88,20 +93,10 @@ public class NavigatorController    {
         return mav;
     }
 
-
-
-    @GetMapping("/Login")
-    public String startLoginPage( ) {
-        return "Login";
-    }
-
-
     @GetMapping("/AddInstitution")
     public ModelAndView startAddInstitutionPage( ) {
         ModelAndView mav = new ModelAndView("AddInstitution");
         return mav;
     }
-
-
 
 }

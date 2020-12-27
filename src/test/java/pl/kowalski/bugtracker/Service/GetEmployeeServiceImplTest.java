@@ -3,8 +3,9 @@ package pl.kowalski.bugtracker.Service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import pl.kowalski.bugtracker.Dao.JdbcTemplate.EmployeeDaoImpl;
-import pl.kowalski.bugtracker.Dao.Repositories.EmployeeRepository;
+import pl.kowalski.bugtracker.Dao.EmployeeDaoImpl;
+import pl.kowalski.bugtracker.Repositories.EmployeeRepository;
+import pl.kowalski.bugtracker.Service.Get.GetEmployeeServiceImpl;
 
 import static org.junit.jupiter.api.Assertions.*;
 

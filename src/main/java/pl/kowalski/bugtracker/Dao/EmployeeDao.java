@@ -1,6 +1,8 @@
-package pl.kowalski.bugtracker.Dao.JdbcTemplate.Interfaces;
+package pl.kowalski.bugtracker.Dao;
+
 
 import java.util.List;
+
 
 public interface EmployeeDao {
 

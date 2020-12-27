@@ -1,4 +1,4 @@
-package pl.kowalski.bugtracker.Model;
+package pl.kowalski.bugtracker.Service;
 
 import pl.kowalski.bugtracker.Model.Dto.EmployeeDto;
 import pl.kowalski.bugtracker.Model.Entity.Bug;

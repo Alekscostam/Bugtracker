@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import pl.kowalski.bugtracker.Model.Dto.EmployeeDto;
 import pl.kowalski.bugtracker.Model.Entity.Employee;
 import pl.kowalski.bugtracker.Service.DmlServiceImpl;
-import pl.kowalski.bugtracker.Service.GetEmployeeServiceImpl;
+import pl.kowalski.bugtracker.Service.Get.GetEmployeeServiceImpl;
 
 import java.util.Optional;
 
@@ -54,7 +54,6 @@ public class RegisterController {
         ModelAndView mav = new ModelAndView("Register");
         String message = "";
 
-
         if (employeeDto.getEmail() == null
                 || employeeDto.getFirstName() == null
                 || employeeDto.getLastName() == null
@@ -64,7 +63,6 @@ public class RegisterController {
         ) message = "Fields cant be empty!";
 
         else {
-
             if (employeeDto.getrPassword().equals(employeeDto.getPassword())) {
                 Optional<Employee> employeeExist = getEmployeeService.findEmployeeByEmail(employeeDto.getEmail());
                 if (employeeExist.isEmpty()) {
@@ -74,14 +72,9 @@ public class RegisterController {
                 } else
                     message = "User exist!";
 
-            } else {
-                message = "Password are not the same!";
-
-            }
-
+            } else
+                message = "Passwords are not the same!";
         }
-
-
 
         mav.addObject("employeeDto", employeeDto);
         mav.addObject("message", message);

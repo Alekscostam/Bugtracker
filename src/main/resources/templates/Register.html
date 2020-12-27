@@ -19,9 +19,6 @@
 
         function generateCode() {
 
-
-            alert("he");
-
             var xhttp = new XMLHttpRequest();
 
             xhttp.open("GET", "/generateCode", true);
@@ -85,17 +82,14 @@
                     </tr>
                 </table>
                 <br>
+                    <label th:text="${message}" style="color: red"></label>
+                <br>
                 <button type="submit" class="registerbtn">Create your account</button>
 
             </h5>
-            <div>
 
-                <label th:text="${message}" style="color: red"></label>
-
-            </div>
             <div class="container signin">
                 <p>Already have an account? <a href="/Login">Sign in</a>.</p>
-                <p>Do you want to add institutions? <a href="/AddInstitution">add institution</a>.</p>
             </div>
         </div>
 
