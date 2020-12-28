@@ -3,6 +3,7 @@ package pl.kowalski.bugtracker.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import pl.kowalski.bugtracker.Model.Dto.BugDto;
 import pl.kowalski.bugtracker.Repositories.BugRepository;
 import pl.kowalski.bugtracker.Repositories.EmployeeRepository;
 import pl.kowalski.bugtracker.Model.Dto.EmployeeDto;
@@ -32,16 +33,11 @@ public class DmlServiceImpl implements DmlService {
     }
 
     @Override
-    public boolean postBug(Bug bug, Principal principal) {
+    public boolean postBug(BugDto bugDto, Principal principal) {
         Optional<Employee> employeeByEmail = getEmployeeService.findEmployeeByEmail(principal.getName());
 
         if (employeeByEmail.isPresent()) {
-
-            Date date  = new Date(System.currentTimeMillis());
-            bug.setEmployeeId(employeeByEmail.get());
-            bug.setDate(date);
-            bug.setLastModify(date);
-            bug.setProgress(Progress.OPEN);
+            Bug bug = ObjectMapper.mapBugDtoToBug(bugDto, employeeByEmail.get());
             bugRepository.save(bug);
             return true;
         }

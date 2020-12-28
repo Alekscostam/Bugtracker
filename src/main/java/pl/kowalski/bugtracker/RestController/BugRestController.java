@@ -34,12 +34,18 @@ public class BugRestController {
     }
 
 
-    // TODO: 27.12.2020 wiadomosc czy zostal dodany bug
+    @PostMapping("/CreateNewIssue")
+    public ModelAndView addNewIssue(@ModelAttribute BugDto bug, Principal principal) {
+        ModelAndView mav = new ModelAndView("redirect:/CreateNewIssue");
+        boolean postBugResult = dmlBugService.postBug(bug, principal);
 
-    @PostMapping("/addNewIssue")
-    public void addNewIssue(@ModelAttribute Bug bug, Principal principal) {
-       dmlBugService.postBug(bug, principal);
+        if (postBugResult) {
+            mav.addObject("message", "successfully added!");
+        }
+        else
+            mav.addObject("message", "failure!");
 
+        return mav;
     }
 
     @GetMapping("/getActuallyTasksByProjectId")

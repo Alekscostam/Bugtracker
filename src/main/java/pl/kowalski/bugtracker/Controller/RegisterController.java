@@ -36,14 +36,8 @@ public class RegisterController {
     }
 
     @GetMapping("/Register")
-    public ModelAndView getRegister(@ModelAttribute("employeeDto") EmployeeDto employeeDto, String message) {
-
-
-        ModelAndView mav = new ModelAndView("Register");
-        mav.addObject("employeeDto", employeeDto);
-        mav.addObject("message", message);
-
-        return mav;
+    public String getRegister(@ModelAttribute("employeeDto") EmployeeDto employeeDto) {
+        return "Register";
     }
 
 
@@ -59,8 +53,8 @@ public class RegisterController {
                 || employeeDto.getLastName() == null
                 || employeeDto.getrPassword() == null
                 || employeeDto.getPassword() == null
-                || employeeDto.getInstitutionCode() == null
-        ) message = "Fields cant be empty!";
+                || employeeDto.getInstitutionCode() == null)
+            message = "Fields cant be empty!";
 
         else {
             if (employeeDto.getrPassword().equals(employeeDto.getPassword())) {

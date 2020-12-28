@@ -57,16 +57,19 @@ public class MenuController {
 
 
     @GetMapping("/CreateNewIssue")
-    public ModelAndView  startCreateIssue() {
-        ModelAndView mav = new ModelAndView("AddNewBug");
+    public ModelAndView  startCreateIssue(String message) {
+        ModelAndView mav = new ModelAndView("CreateNewIssue");
         List<Project> projectList = getProjectServiceImpl.findAllProjects();
         mav.addObject("projects", projectList);
+        if(message!=null)
+            mav.addObject("message", message);
+
         return mav;
     }
 
-    @GetMapping("/createProject")
+    @GetMapping("/CreateNewProject")
     public String startCreateProject() {
-        return "redirect:/start";
+        return "CreateNewProject";
     }
 
     @GetMapping("/openTasks")
