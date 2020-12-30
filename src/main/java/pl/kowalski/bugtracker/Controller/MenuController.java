@@ -36,6 +36,8 @@ public class MenuController {
         return "redirect:Register";
     }
 
+
+    // TODO: 30.12.2020 wstawianie aktualnych projektow do selecta w Allbugs.html 
     @GetMapping("/AllBugs")
     public ModelAndView startMyTasks(Principal principal) {
 
@@ -44,8 +46,7 @@ public class MenuController {
 
         if (employeeByEmail.isEmpty())
             throw new EmailNotFoundException("Something goes wrong... User is not present after log in");
-
-        List<Project> projectList = getProjectServiceImpl.findAllProjectsByCode(employeeByEmail.get().getEmail());
+        List<Project> projectList = getProjectServiceImpl.findAllProjectsByCode(employeeByEmail.get().getInstitutionCode());
 
         if(projectList.isEmpty())
             mav.addObject("message", "No projects were found!");
@@ -57,9 +58,14 @@ public class MenuController {
 
 
     @GetMapping("/CreateNewIssue")
-    public ModelAndView  startCreateIssue(String message) {
+    public ModelAndView  startCreateIssue(String message, Principal principal) {
         ModelAndView mav = new ModelAndView("CreateNewIssue");
-        List<Project> projectList = getProjectServiceImpl.findAllProjects();
+        Optional<Employee> employeeByEmail = getEmployeeServiceImpl.findEmployeeByEmail(principal.getName());
+
+        if (employeeByEmail.isEmpty())
+            throw new EmailNotFoundException("Something goes wrong... User is not present after log in");
+        List<Project> projectList = getProjectServiceImpl.findAllProjectsByCode(employeeByEmail.get().getInstitutionCode());
+
         mav.addObject("projects", projectList);
         if(message!=null)
             mav.addObject("message", message);
@@ -68,8 +74,13 @@ public class MenuController {
     }
 
     @GetMapping("/CreateNewProject")
-    public String startCreateProject() {
-        return "CreateNewProject";
+    public ModelAndView startCreateProject(String message) {
+
+        ModelAndView mav = new ModelAndView("CreateNewProject");
+        if(message!=null)
+            mav.addObject("message", message);
+
+        return mav;
     }
 
     @GetMapping("/openTasks")

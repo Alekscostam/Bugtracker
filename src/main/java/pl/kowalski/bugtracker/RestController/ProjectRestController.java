@@ -11,6 +11,7 @@ import pl.kowalski.bugtracker.Repositories.ProjectRepository;
 import pl.kowalski.bugtracker.Model.Entity.Project;
 import pl.kowalski.bugtracker.Service.Post.PostProjectServiceImpl;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -36,10 +37,19 @@ public class ProjectRestController {
     }
 
     @PostMapping("/CreateNewProject")
-    public void createNewProject(@ModelAttribute ProjectDto projectDto)
+    public ModelAndView createNewProject(@ModelAttribute ProjectDto projectDto, Principal principal)
     {
 
-        postProjectService.postProject(projectDto);
+        ModelAndView mav = new ModelAndView("redirect:/CreateNewProject");
+        boolean postProject = postProjectService.postProject(projectDto, principal);
+
+        if (postProject) {
+            mav.addObject("message", "Project successfully added!");
+        }
+        else
+            mav.addObject("message", "failure!");
+
+        return mav;
     }
 
 

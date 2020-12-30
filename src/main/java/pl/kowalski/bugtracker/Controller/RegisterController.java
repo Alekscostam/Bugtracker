@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import pl.kowalski.bugtracker.Model.Dto.EmployeeDto;
 import pl.kowalski.bugtracker.Model.Entity.Employee;
-import pl.kowalski.bugtracker.Service.DmlServiceImpl;
+import pl.kowalski.bugtracker.Service.RegisterServiceImpl;
 import pl.kowalski.bugtracker.Service.Get.GetEmployeeServiceImpl;
 
 import java.util.Optional;
@@ -20,11 +20,11 @@ import java.util.Optional;
 public class RegisterController {
 
 
-    private final DmlServiceImpl dmlService;
+    private final RegisterServiceImpl dmlService;
     private final GetEmployeeServiceImpl  getEmployeeService;
 
     @Autowired
-    public RegisterController(DmlServiceImpl dmlService, GetEmployeeServiceImpl getEmployeeService) {
+    public RegisterController(RegisterServiceImpl dmlService, GetEmployeeServiceImpl getEmployeeService) {
         this.dmlService = dmlService;
         this.getEmployeeService = getEmployeeService;
     }

@@ -15,7 +15,7 @@
         function messageChecker(){
             let message = document.getElementById("message").innerText;
 
-            if(message === "successfully added!")
+            if(message.includes("successfully added!"))
             {
                 document.getElementById("message").style.color = "green";
             }

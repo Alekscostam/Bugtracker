@@ -8,39 +8,35 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import pl.kowalski.bugtracker.Model.Dto.BugDto;
 import pl.kowalski.bugtracker.Model.Entity.Bug;
-import pl.kowalski.bugtracker.Model.Entity.Employee;
-import pl.kowalski.bugtracker.Service.DmlServiceImpl;
+import pl.kowalski.bugtracker.Service.Post.PostBugServiceImpl;
 import pl.kowalski.bugtracker.Service.Get.GetBugServiceImpl;
-import pl.kowalski.bugtracker.Service.Get.GetEmployeeServiceImpl;
-
 import java.security.Principal;
-import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class BugRestController {
 
 
     private final GetBugServiceImpl getBugService;
-    private final DmlServiceImpl dmlBugService;
+    private final PostBugServiceImpl postBugService;
 
 
     @Autowired
-    public BugRestController(GetBugServiceImpl getBugService, DmlServiceImpl dmlBugService) {
+    public BugRestController(GetBugServiceImpl getBugService, PostBugServiceImpl postBugService) {
         this.getBugService = getBugService;
-        this.dmlBugService = dmlBugService;
-
+        this.postBugService = postBugService;
     }
 
 
+
+
     @PostMapping("/CreateNewIssue")
-    public ModelAndView addNewIssue(@ModelAttribute BugDto bug, Principal principal) {
+    public ModelAndView addNewIssue(@ModelAttribute Bug bug, Principal principal) {
         ModelAndView mav = new ModelAndView("redirect:/CreateNewIssue");
-        boolean postBugResult = dmlBugService.postBug(bug, principal);
+        boolean postBugResult = postBugService.postBug(bug, principal);
 
         if (postBugResult) {
-            mav.addObject("message", "successfully added!");
+            mav.addObject("message", "Issue successfully added!");
         }
         else
             mav.addObject("message", "failure!");

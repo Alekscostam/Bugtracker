@@ -1,32 +1,49 @@
 package pl.kowalski.bugtracker.Service.Post;
 
 
-import com.sun.xml.bind.v2.TODO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.kowalski.bugtracker.Model.Dto.ProjectDto;
+import pl.kowalski.bugtracker.Model.Entity.Bug;
+import pl.kowalski.bugtracker.Model.Entity.Employee;
 import pl.kowalski.bugtracker.Model.Entity.Project;
 import pl.kowalski.bugtracker.Repositories.ProjectRepository;
+import pl.kowalski.bugtracker.Service.Get.GetEmployeeServiceImpl;
 import pl.kowalski.bugtracker.Service.ObjectMapper;
+
+import java.security.Principal;
+import java.util.Optional;
+
 
 @Service
 public class PostProjectServiceImpl implements PostProjectService {
 
-    private final ProjectRepository projectRepository;
+    private static Logger LOGGER = LoggerFactory.getLogger(PostProjectServiceImpl.class);
 
-    @Autowired
-    public PostProjectServiceImpl(ProjectRepository projectRepository) {
+    private final ProjectRepository projectRepository;
+    private final GetEmployeeServiceImpl getEmployeeService;
+
+
+    public PostProjectServiceImpl(ProjectRepository projectRepository, GetEmployeeServiceImpl getEmployeeService) {
         this.projectRepository = projectRepository;
+        this.getEmployeeService = getEmployeeService;
     }
 
-
-    // TODO: 27.12.2020 dodanie alertu czy dodalo czy nie!
     @Override
-    public boolean postProject(ProjectDto projectDto) {
+    public boolean postProject(ProjectDto projectDto, Principal principal) {
 
-        Project project = ObjectMapper.mapProjectDtoToProject(projectDto);
-        projectRepository.save(project);
+        Optional<Employee> employeeByEmail = getEmployeeService.findEmployeeByEmail(principal.getName());
+        boolean present = employeeByEmail.isPresent();
 
-        return false;
+
+        if(present){
+            Project project = ObjectMapper.mapProjectDtoToProject(projectDto, employeeByEmail.get());
+            projectRepository.save(project);
+        }
+
+        return  present;
+
     }
 }

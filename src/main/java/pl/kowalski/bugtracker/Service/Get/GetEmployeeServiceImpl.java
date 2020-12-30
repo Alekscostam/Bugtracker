@@ -36,6 +36,7 @@ public class GetEmployeeServiceImpl implements GetEmployeeService {
 
     @Override
     public List<String> getInstitutionCodes() {
+
         return employeeRepository.findAll().stream().map(Employee::getInstitutionCode).collect(Collectors.toList());
     }
 
@@ -67,6 +68,9 @@ public class GetEmployeeServiceImpl implements GetEmployeeService {
             }
         }
         return sb.substring(0, sb.length() - 1);
+
+
+
     }
 
 

@@ -30,6 +30,9 @@ public class Project {
         this.date = date;
     }
 
+    public void setInstitutionCode(String institutionCode) {
+        this.institutionCode = institutionCode;
+    }
 
     public void setDescription(String description) {
         this.description = description;

@@ -33,20 +33,15 @@ public class ObjectMapper {
         Date date = new Date(System.currentTimeMillis());
 
         Bug bug = new Bug();
-        bug.setDate(date);
-        bug.setDescription(bugDto.getDescription());
-        bug.setId(bugDto.getId());
-        bug.setLevel(bugDto.getLevel());
-        bug.setProgress(Progress.OPEN);
-        bug.setLastModify(date);
-        bug.setEmployeeId(reporter);
+
 
         return bug;
     }
 
-    public static Project mapProjectDtoToProject(ProjectDto projectDto) {
+    public static Project mapProjectDtoToProject(ProjectDto projectDto, Employee employee) {
         Date date = new Date(System.currentTimeMillis());
         Project project = new Project();
+        project.setInstitutionCode(employee.getInstitutionCode());
         project.setDate(date);
         project.setName(projectDto.getName());
         project.setDescription(projectDto.getDescription());
