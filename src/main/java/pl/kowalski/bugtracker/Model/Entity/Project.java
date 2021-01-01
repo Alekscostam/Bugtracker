@@ -38,8 +38,8 @@ public class Project {
         this.description = description;
     }
 
-    @ManyToMany
-    Set<Employee> employee;
+   /* @ManyToMany
+    Set<Employee> employee;*/
 
     @OneToMany(mappedBy="project")
     Set<Bug> bugs;

@@ -27,11 +27,11 @@ public class GetBugServiceImpl implements GetBugService {
 
     @Override
     public List<BugDto> getAllBugsByProjectId(Long projectId) {
-        List<Bug> allByProjectId = bugRepository.findAllByProjectId(projectId);
-        List<Bug> all = bugRepository.findAll();
 
+        List<Bug> allByProjectId = bugRepository.findAllByProjectId(projectId);
         List<BugDto> bugDtoList =new ArrayList<>();
         allByProjectId.forEach(bug-> bugDtoList.add(ObjectMapper.mapBugToBugDto(bug)));
+
         return bugDtoList;
     }
 

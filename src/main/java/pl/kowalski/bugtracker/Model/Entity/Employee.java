@@ -28,8 +28,9 @@ public class Employee {
     private String institutionCode;
 
 
-    @ManyToMany
+    /*@ManyToMany
     Set<Project> project;
+    */
 
     @OneToMany(mappedBy = "employee")
     Set<Bug> bug;

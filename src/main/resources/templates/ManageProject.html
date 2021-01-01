@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <title>My Tasks</title>
+
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+
+    <script>
+
+
+        function manageProject()
+        {
+            alert("Hello ")
+        }
+
+
+
+        function messageChecker(){
+            let message = document.getElementById("alert").innerText;
+
+            if(message.includes("successfully modify!"))
+            {
+                document.getElementById("alert").style.color = "green";
+            }
+            else
+            {
+                document.getElementById("alert").style.color = "red";
+            }
+        }
+
+        function checkData() {
+            let alert = document.getElementById("alert").innerText;
+
+            if (alert === null || alert === '')
+                document.getElementById("selectProject").style.visibility = "visible";
+
+        }
+        function loadDataProject() {
+
+
+            var xhttp = new XMLHttpRequest();
+
+            var id = document.getElementById("selectProject");
+            xhttp.open("GET", "/getDataByProjectId?projectId=" + id.options[id.selectedIndex].value, true);
+            xhttp.send();
+
+            xhttp.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+
+                }
+            }
+        }
+
+    </script>
+</head>
+<body onload="messageChecker();checkData();">
+
+<div style="width: 100%; height: 100%; min-height: 100%; min-width: 100%">
+    <nav style="width: 100%; height: 100px;  background-color: darkgray; color: white; border-style: groove ">
+        <div style="font-size: 50px"> MpgaBUG</div>
+    </nav>
+    <section style="width: 13%; height: 100%; float: left; border-style: groove ;  background-color:lightgray;">
+        <ul><br>
+            <a class="links" href="/AllBugs">All Issues</a><br>
+            <hr>
+            <a class="links" href="/MyTasks">My tasks</a><br>
+            <hr>
+            <a class="links" href="/CreateNewIssue">Add new issue</a><br>
+            <hr>
+            <a class="links" href="/CreateNewIssue">Log out</a><br>
+            <hr>
+            <a class="links" href="/CreateNewProject">Log out</a><br>
+        </ul>
+    </section>
+    <aside style="width: 85%; height: 100%; float: left; background-color:transparent;">
+        <div class="container-top">
+            <h2>Manage project</h2>
+            <p>Please select project from the list below</p>
+            <hr>
+
+            <h3>
+
+            </h3>
+
+            <div style="margin: 50px" align="center">
+
+
+
+                <button onclick="loadDataProject()"> Load data </button>
+                <select id="selectProject" style=" margin: 30px; width:  30%; visibility: hidden"
+                        name="projectId">
+                    <option class="option"
+                            th:each="project: ${projects}"
+                            th:value="${project.id}"
+                            th:text="${project.name}"></option>
+                </select>
+
+
+                <form action="/CreateNewProject" method="post" >
+
+                    <h5>
+                        <table style="margin-top: 50px;  text-align: left;" align="center">
+                            <tr>
+                                <th>Project name</th>
+                                <th>
+                                    <input placeholder="Enter project name" name="name"  type="text"/>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Description</th>
+                                <th class="thStyle" width="600px" height="150px">
+                        <textarea name="description" style="width: 600px; height: 150px; font-size: 20px">
+                        </textarea>
+                                </th>
+                            </tr>
+                            </h2>
+                        </table>
+                        <br>
+                        <label id="alert" style="font-size: 25px; color: red" th:text="${message}"></label>
+                        <br>
+                        <button id="btnManage" text="Manage project" onclick="manageProject()"></button>
+                        </button>
+                    </h5>
+                    <button type="submit" class="btnAdd">Add new project</button>
+                </form>
+            </div>
+        </div>
+    </aside>
+</div>
+<div>
+    <div w3-include-HTML="AboutBug.html"></div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

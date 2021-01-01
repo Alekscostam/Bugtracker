@@ -11,7 +11,7 @@ INSERT INTO employee(first_name,last_name,email,password,institution_code) VALUE
 INSERT INTO employee(first_name,last_name,email,password,institution_code) VALUES('Employee 5','Employee last1','Employee@wp.pl1','sadsd','85bDT-PZc1M-or5Vr-kmRQR');
 INSERT INTO employee(first_name,last_name,email,password,institution_code) VALUES('Employee 6','Employee last1','Employee@wp.pl1','sadsd','85bDT-PZc1M-or5Vr-kmRQR');
 INSERT INTO employee(first_name,last_name,email,password,institution_code) VALUES('Employee 7','Employee last1','Employee@wp.pl1','sadsd','85bDT-PZc1M-or5Vr-kmRQR');
-INSERT INTO employee(first_name,last_name,email,password,institution_code) VALUES('asd','asd','asd@wp.pl','$2a$10$IZv9QCL212u3e3rlpbAqJ.2STaiJ2tdnpLdRkypxQclE2xN5QdbgW','asd-asd-asd-asd');
+INSERT INTO employee(first_name,last_name,email,password,institution_code) VALUES('asd','asd','asd@wp.pl','$2a$10$IZv9QCL212u3e3rlpbAqJ.2STaiJ2tdnpLdRkypxQclE2xN5QdbgW','85bDT-PZc1M-or5Vr-kmRQR');
 
 
 

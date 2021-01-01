@@ -48,9 +48,9 @@ create table bug_employee
     constraint bug_employee_pkey primary key (bug_id, employee_id)
 );
 
-create table employee_project
-(
-    employee_id bigserial not null constraint fkb25s5hgggo6k4au4sye7teb3a references employee(id),
-    project_id  bigserial not null constraint fk4yddvnm7283a40plkcti66wv9 references project(id),
-    constraint employee_project_pkey primary key (employee_id, project_id)
-);
+-- create table employee_project
+-- (
+--     employee_id bigserial not null constraint fkb25s5hgggo6k4au4sye7teb3a references employee(id),
+--     project_id  bigserial not null constraint fk4yddvnm7283a40plkcti66wv9 references project(id),
+--     constraint employee_project_pkey primary key (employee_id, project_id)
+-- );

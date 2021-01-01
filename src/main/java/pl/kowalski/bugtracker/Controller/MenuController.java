@@ -19,6 +19,7 @@ import java.util.Optional;
 @Controller
 public class MenuController {
 
+    private static final String  MESSAGE = "message";
 
     private final GetBugServiceImpl getBugServiceImpl;
     private final GetEmployeeServiceImpl getEmployeeServiceImpl;
@@ -37,7 +38,7 @@ public class MenuController {
     }
 
 
-    // TODO: 30.12.2020 wstawianie aktualnych projektow do selecta w Allbugs.html 
+
     @GetMapping("/AllBugs")
     public ModelAndView startMyTasks(Principal principal) {
 
@@ -46,10 +47,11 @@ public class MenuController {
 
         if (employeeByEmail.isEmpty())
             throw new EmailNotFoundException("Something goes wrong... User is not present after log in");
+
         List<Project> projectList = getProjectServiceImpl.findAllProjectsByCode(employeeByEmail.get().getInstitutionCode());
 
         if(projectList.isEmpty())
-            mav.addObject("message", "No projects were found!");
+            mav.addObject(MESSAGE, "No projects were found!");
 
         mav.addObject("projects", projectList);
         return mav;
@@ -68,7 +70,7 @@ public class MenuController {
 
         mav.addObject("projects", projectList);
         if(message!=null)
-            mav.addObject("message", message);
+            mav.addObject(MESSAGE, message);
 
         return mav;
     }
@@ -78,7 +80,7 @@ public class MenuController {
 
         ModelAndView mav = new ModelAndView("CreateNewProject");
         if(message!=null)
-            mav.addObject("message", message);
+            mav.addObject(MESSAGE, message);
 
         return mav;
     }
@@ -86,6 +88,25 @@ public class MenuController {
     @GetMapping("/openTasks")
     public String startOpenTasks() {
         return "redirect:/start";
+    }
+
+
+    @GetMapping("/ManageProject")
+    public ModelAndView startManageProject(String message, Principal principal) {
+        ModelAndView mav = new ModelAndView("ManageProject");
+        Optional<Employee> employeeByEmail = getEmployeeServiceImpl.findEmployeeByEmail(principal.getName());
+
+        if (employeeByEmail.isEmpty())
+            throw new EmailNotFoundException("Something goes wrong... User is not present after log in");
+
+        List<Project> projectList = getProjectServiceImpl.findAllProjectsByCode(employeeByEmail.get().getInstitutionCode());
+
+        if(projectList.isEmpty())
+            mav.addObject(MESSAGE, "No projects were found!");
+
+        mav.addObject("projects", projectList);
+        return mav;
+
     }
 
     @GetMapping("/inProgressTasks")
