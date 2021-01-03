@@ -12,6 +12,7 @@ import pl.kowalski.bugtracker.Repositories.ProjectRepository;
 import pl.kowalski.bugtracker.Model.Entity.Project;
 import pl.kowalski.bugtracker.Service.Get.GetProjectService;
 import pl.kowalski.bugtracker.Service.Get.GetProjectServiceImpl;
+import pl.kowalski.bugtracker.Service.ObjectMapper;
 import pl.kowalski.bugtracker.Service.Post.PostProjectServiceImpl;
 
 import java.security.Principal;
@@ -55,14 +56,13 @@ public class ProjectRestController {
     }
 
 
-    // TODO: 01.01.2021 cos tu sie dzieje wiec trza naprawic  
-    // TODO: 01.01.2021 wstawianie projectu do tabelek  
+    // TODO: 03.01.2021 polaczenie dodawania projectu z managae projectr html
     @GetMapping("/getDataByProjectId")
-    public Project getDataProject(Long projectId) throws NotFoundException {
+    public ProjectDto getDataProject(Long projectId) throws NotFoundException {
         Optional<Project> dataByProjectId = getProjectService.findDataByProjectId(projectId);
         if(dataByProjectId.isPresent())
         {
-            return dataByProjectId.get();
+            return ObjectMapper.mapProjectToProjectDto(dataByProjectId.get());
         }
         else
             throw new NotFoundException("Something goes wrong... project is not found");

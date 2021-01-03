@@ -12,14 +12,6 @@
 
     <script>
 
-
-        function manageProject()
-        {
-            alert("Hello ")
-        }
-
-
-
         function messageChecker(){
             let message = document.getElementById("alert").innerText;
 
@@ -40,20 +32,28 @@
                 document.getElementById("selectProject").style.visibility = "visible";
 
         }
-        function loadDataProject() {
 
+        function loadDataProject() {
 
             var xhttp = new XMLHttpRequest();
 
             var id = document.getElementById("selectProject");
             xhttp.open("GET", "/getDataByProjectId?projectId=" + id.options[id.selectedIndex].value, true);
-            xhttp.send();
+
 
             xhttp.onreadystatechange = function () {
                 if (this.readyState === 4 && this.status === 200) {
+                  let project = JSON.parse(xhttp.responseText);
+
+                    document.getElementById("thId").innerText =project.id;
+                    document.getElementById("thDate").innerText =project.date;
+                    document.getElementById("thName").innerText =project.name;
+                    document.getElementById("thDesc").innerText =project.description;
 
                 }
             }
+
+            xhttp.send();
         }
 
     </script>
@@ -89,8 +89,6 @@
 
             <div style="margin: 50px" align="center">
 
-
-
                 <button onclick="loadDataProject()"> Load data </button>
                 <select id="selectProject" style=" margin: 30px; width:  30%; visibility: hidden"
                         name="projectId">
@@ -100,34 +98,29 @@
                             th:text="${project.name}"></option>
                 </select>
 
+                <table border="1">
+                    <tr>
+                        <th class="thHeader" width="250px">Id</th>
+                        <th class="thHeader" width="250px">Date</th>
+                        <th class="thHeader" width="250px">Name</th>
+                        <th class="thHeader" width="250px">Description</th>
+                    </tr>
+                    <tr>
+                        <th class="thStyle" ID="thId" width="250px"></th>
+                        <th class="thStyle" ID="thDate" width="250px"></th>
+                        <th class="thStyle" ID="thName" width="250px"></th>
+                        <th class="thStyle" ID="thDesc" width="250px"></th>
+                    </tr>
+                </table>
 
-                <form action="/CreateNewProject" method="post" >
+                <table>
+                    <tr>
+                        <th style="text-align: center;"> <button style="background: green" class="btnAction">Edit</button></th>
+                        <th style="text-align: center;"> <button style="background: red" class="btnAction">Delete</button></th>
+                    </tr>
+                </table>
+                <label id="alert" style="font-size: 25px; color: red" th:text="${message}"></label>
 
-                    <h5>
-                        <table style="margin-top: 50px;  text-align: left;" align="center">
-                            <tr>
-                                <th>Project name</th>
-                                <th>
-                                    <input placeholder="Enter project name" name="name"  type="text"/>
-                                </th>
-                            </tr>
-                            <tr>
-                                <th>Description</th>
-                                <th class="thStyle" width="600px" height="150px">
-                        <textarea name="description" style="width: 600px; height: 150px; font-size: 20px">
-                        </textarea>
-                                </th>
-                            </tr>
-                            </h2>
-                        </table>
-                        <br>
-                        <label id="alert" style="font-size: 25px; color: red" th:text="${message}"></label>
-                        <br>
-                        <button id="btnManage" text="Manage project" onclick="manageProject()"></button>
-                        </button>
-                    </h5>
-                    <button type="submit" class="btnAdd">Add new project</button>
-                </form>
             </div>
         </div>
     </aside>

@@ -16,10 +16,8 @@ import java.util.List;
 @RestController
 public class BugRestController {
 
-
     private final GetBugServiceImpl getBugService;
     private final PostBugServiceImpl postBugService;
-
 
     @Autowired
     public BugRestController(GetBugServiceImpl getBugService, PostBugServiceImpl postBugService) {
@@ -27,17 +25,13 @@ public class BugRestController {
         this.postBugService = postBugService;
     }
 
-
-
-
     @PostMapping("/CreateNewIssue")
     public ModelAndView addNewIssue(@ModelAttribute Bug bug, Principal principal) {
         ModelAndView mav = new ModelAndView("redirect:/CreateNewIssue");
         boolean postBugResult = postBugService.postBug(bug, principal);
 
-        if (postBugResult) {
+        if (postBugResult)
             mav.addObject("message", "Issue successfully added!");
-        }
         else
             mav.addObject("message", "failure!");
 
@@ -63,6 +57,5 @@ public class BugRestController {
         return mav;
     }
 
-
-
+    // TODO: 03.01.2021 post put delete na bugach 
 }

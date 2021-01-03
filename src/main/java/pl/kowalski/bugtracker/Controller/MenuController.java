@@ -118,7 +118,7 @@ public class MenuController {
         return "redirect:/start";
     }
 
-    @GetMapping("/AllInfoAboutBug")
+    @GetMapping("/AboutBug")
     public ModelAndView startBugInfoPage(Long bugId) {
         ModelAndView mav = new ModelAndView("AboutBug");
         BugDto infoAboutBug = getBugServiceImpl.getInfoAboutBug(bugId);

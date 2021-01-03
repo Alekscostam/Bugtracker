@@ -8,6 +8,8 @@ import pl.kowalski.bugtracker.Model.Entity.Employee;
 import pl.kowalski.bugtracker.Model.Entity.Project;
 import pl.kowalski.bugtracker.Model.Progress;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -61,4 +63,14 @@ public class ObjectMapper {
         return employee;
     }
 
+    public static ProjectDto mapProjectToProjectDto(Project project) {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+
+        ProjectDto projectDto = new ProjectDto();
+        projectDto.setDate(formatter.format(project.getDate()));
+        projectDto.setDescription(project.getDescription());
+        projectDto.setName(project.getName());
+        projectDto.setId(project.getId());
+        return projectDto;
+    }
 }
